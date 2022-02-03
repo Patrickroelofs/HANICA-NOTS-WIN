@@ -74,6 +74,9 @@ namespace bp01_chatapplicatie
       buffer = Encoding.ASCII.GetBytes("bye");
       networkStream.Write(buffer, 0, buffer.Length);
 
+      tcpClient.GetStream().Close();
+      tcpClient.Close();
+
       addMessage("Connection Closed");
     }
 
