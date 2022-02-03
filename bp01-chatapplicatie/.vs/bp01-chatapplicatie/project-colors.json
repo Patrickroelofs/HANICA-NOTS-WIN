@@ -10,7 +10,12 @@
       "ProjectGuid": "544888f2-c1d8-4263-8d56-22ca9870f426",
       "DisplayName": "bp01-chatapplicatie-server",
       "ColorIndex": 1
+    },
+    "d75b4619-ce8f-4b80-9028-dd31e46c93f9": {
+      "ProjectGuid": "d75b4619-ce8f-4b80-9028-dd31e46c93f9",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
