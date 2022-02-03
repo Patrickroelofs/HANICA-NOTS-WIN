@@ -18,6 +18,15 @@ namespace bp01_chatapplicatie
     public Client()
     {
       InitializeComponent();
+
+      // Send message on input key enter
+      txtMessageToBeSend.KeyDown += (sender, args) =>
+      {
+        if (args.KeyCode == Keys.Enter)
+        {
+          btnSend.PerformClick();
+        }
+      };
     }
 
     private void addMessage(string message)
