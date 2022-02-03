@@ -1,40 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace bp01_chatapplicatie
 {
-    public partial class ChatForm : Form
+    public partial class Client : Form
     {
-        public ChatForm()
+        private TcpClient _tcpClient;
+        private NetworkStream _networkStream;
+        private Thread _thread;
+
+        public Client()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public delegate void setMessage(string input);
+
+        private void btnListen_Click(object sender, EventArgs e)
         {
-            
+            var server = new TcpListener(IPAddress.Any, 9000);
+            server.Start();
+
+            MessageBox.Items.Add("Listening for a client..." + Environment.NewLine);
+
+            _tcpClient = server.AcceptTcpClient();
+            _thread = new Thread(new ThreadStart(ReceiveData));
+            _thread.Start();
         }
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        private void ReceiveData()
         {
-            
-        }
+            int bufferSize = 1024;
+            string message;
+            byte[] buffer = new byte[bufferSize];
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
+            _networkStream = _tcpClient.GetStream();
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+            while(true)
+            {
+                int readBytes = _networkStream.Read(buffer, 0, buffer.Length);
+                message = Encoding.ASCII.GetString(buffer);
 
+                if (message == "bye") break;
+            }
         }
     }
 }

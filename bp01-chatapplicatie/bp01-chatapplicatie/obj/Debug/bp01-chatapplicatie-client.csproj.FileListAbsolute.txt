@@ -8,4 +8,4 @@ C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie\obj\Debug\bp01-ch
 C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie\obj\Debug\bp01_chatapplicatie.exe
 C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie\obj\Debug\bp01_chatapplicatie.pdb
 C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie\obj\Debug\bp01-chatapplicatie-client.csproj.AssemblyReference.cache
-C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie\obj\Debug\bp01_chatapplicatie.chatForm.resources
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie\obj\Debug\bp01_chatapplicatie.Client.resources
