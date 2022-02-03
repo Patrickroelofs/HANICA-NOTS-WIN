@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace bp01_chatapplicatie_server
 {
-    public partial class serverForm : Form
+    public partial class ServerForm : Form
     {
-        public serverForm()
+        public ServerForm()
         {
             InitializeComponent();
         }

@@ -5,7 +5,12 @@
       "ProjectGuid": "5e07c3af-aba2-4d7e-9ba6-6a48ae05bb3c",
       "DisplayName": "bp01-chatapplicatie-client",
       "ColorIndex": 0
+    },
+    "544888f2-c1d8-4263-8d56-22ca9870f426": {
+      "ProjectGuid": "544888f2-c1d8-4263-8d56-22ca9870f426",
+      "DisplayName": "bp01-chatapplicatie-server",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

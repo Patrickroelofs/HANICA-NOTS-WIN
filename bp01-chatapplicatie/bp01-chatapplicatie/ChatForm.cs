@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace bp01_chatapplicatie
 {
-    public partial class chatForm : Form
+    public partial class ChatForm : Form
     {
-        public chatForm()
+        public ChatForm()
         {
             InitializeComponent();
         }

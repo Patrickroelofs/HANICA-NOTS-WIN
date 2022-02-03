@@ -16,7 +16,7 @@ namespace bp01_chatapplicatie_server
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new serverForm());
+            Application.Run(new ServerForm());
         }
     }
 }

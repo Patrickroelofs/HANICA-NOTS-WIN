@@ -1,6 +1,6 @@
 ﻿namespace bp01_chatapplicatie_server
 {
-    partial class serverForm
+    partial class ServerForm
     {
         /// <summary>
         /// Required designer variable.

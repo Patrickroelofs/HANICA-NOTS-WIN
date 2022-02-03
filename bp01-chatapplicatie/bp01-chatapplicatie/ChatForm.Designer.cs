@@ -1,6 +1,6 @@
 ﻿namespace bp01_chatapplicatie
 {
-    partial class chatForm
+    partial class ChatForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(chatForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatForm));
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
@@ -105,7 +105,7 @@
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Name = "chatForm";
+            this.Name = "ChatForm";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
