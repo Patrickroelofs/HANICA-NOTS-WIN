@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "5e07c3af-aba2-4d7e-9ba6-6a48ae05bb3c": {
+      "ProjectGuid": "5e07c3af-aba2-4d7e-9ba6-6a48ae05bb3c",
+      "DisplayName": "bp01-chatapplicatie-client",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}

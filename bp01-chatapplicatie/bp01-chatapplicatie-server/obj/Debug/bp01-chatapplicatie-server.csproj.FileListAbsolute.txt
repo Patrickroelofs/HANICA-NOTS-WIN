@@ -1,0 +1,11 @@
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\bin\Debug\bp01-chatapplicatie-server.exe.config
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\bin\Debug\bp01-chatapplicatie-server.exe
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\bin\Debug\bp01-chatapplicatie-server.pdb
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\obj\Debug\bp01-chatapplicatie-server.csproj.AssemblyReference.cache
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\obj\Debug\bp01-chatapplicatie-server.csproj.SuggestedBindingRedirects.cache
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\obj\Debug\bp01_chatapplicatie_server.Properties.Resources.resources
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\obj\Debug\bp01-chatapplicatie-server.csproj.GenerateResource.cache
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\obj\Debug\bp01-chatapplicatie-server.csproj.CoreCompileInputs.cache
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\obj\Debug\bp01-chatapplicatie-server.exe
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\obj\Debug\bp01-chatapplicatie-server.pdb
+C:\dev\HANICA-NOTS-WIN\bp01-chatapplicatie\bp01-chatapplicatie-server\obj\Debug\bp01_chatapplicatie_server.serverForm.resources
