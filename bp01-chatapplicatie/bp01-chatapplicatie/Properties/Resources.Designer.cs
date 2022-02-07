@@ -83,6 +83,16 @@ namespace bp01_chatapplicatie.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap metal_bg {
+            get {
+                object obj = ResourceManager.GetObject("metal_bg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap patrick {
             get {
                 object obj = ResourceManager.GetObject("patrick", resourceCulture);
