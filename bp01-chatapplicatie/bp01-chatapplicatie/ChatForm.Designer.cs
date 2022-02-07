@@ -36,10 +36,11 @@
       this.connectServerGroupBox = new System.Windows.Forms.GroupBox();
       this.btnConnect = new System.Windows.Forms.Button();
       this.txtChatServerIP = new System.Windows.Forms.TextBox();
-      this.MessageBox = new System.Windows.Forms.ListBox();
+      this.messageBox = new System.Windows.Forms.ListBox();
       this.label2 = new System.Windows.Forms.Label();
       this.clientsConnectedGroupBox = new System.Windows.Forms.GroupBox();
       this.clientsConnected = new System.Windows.Forms.ListBox();
+      this.btnStopServer = new System.Windows.Forms.Button();
       this.connectServerGroupBox.SuspendLayout();
       this.clientsConnectedGroupBox.SuspendLayout();
       this.SuspendLayout();
@@ -84,12 +85,12 @@
       resources.ApplyResources(this.txtChatServerIP, "txtChatServerIP");
       this.txtChatServerIP.Name = "txtChatServerIP";
       // 
-      // MessageBox
+      // messageBox
       // 
-      resources.ApplyResources(this.MessageBox, "MessageBox");
-      this.MessageBox.BackColor = System.Drawing.SystemColors.Window;
-      this.MessageBox.FormattingEnabled = true;
-      this.MessageBox.Name = "MessageBox";
+      resources.ApplyResources(this.messageBox, "messageBox");
+      this.messageBox.BackColor = System.Drawing.SystemColors.Window;
+      this.messageBox.FormattingEnabled = true;
+      this.messageBox.Name = "messageBox";
       // 
       // label2
       // 
@@ -100,9 +101,9 @@
       // 
       // clientsConnectedGroupBox
       // 
+      resources.ApplyResources(this.clientsConnectedGroupBox, "clientsConnectedGroupBox");
       this.clientsConnectedGroupBox.BackColor = System.Drawing.Color.Transparent;
       this.clientsConnectedGroupBox.Controls.Add(this.clientsConnected);
-      resources.ApplyResources(this.clientsConnectedGroupBox, "clientsConnectedGroupBox");
       this.clientsConnectedGroupBox.Name = "clientsConnectedGroupBox";
       this.clientsConnectedGroupBox.TabStop = false;
       // 
@@ -112,13 +113,21 @@
       resources.ApplyResources(this.clientsConnected, "clientsConnected");
       this.clientsConnected.Name = "clientsConnected";
       // 
+      // btnStopServer
+      // 
+      resources.ApplyResources(this.btnStopServer, "btnStopServer");
+      this.btnStopServer.Name = "btnStopServer";
+      this.btnStopServer.UseVisualStyleBackColor = true;
+      this.btnStopServer.Click += new System.EventHandler(this.btnStopServer_Click);
+      // 
       // ChatForm
       // 
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
       resources.ApplyResources(this, "$this");
+      this.Controls.Add(this.btnStopServer);
       this.Controls.Add(this.clientsConnectedGroupBox);
       this.Controls.Add(this.label2);
-      this.Controls.Add(this.MessageBox);
+      this.Controls.Add(this.messageBox);
       this.Controls.Add(this.connectServerGroupBox);
       this.Controls.Add(this.btnSend);
       this.Controls.Add(this.txtMessageToBeSend);
@@ -137,7 +146,7 @@
         private System.Windows.Forms.GroupBox connectServerGroupBox;
         private System.Windows.Forms.TextBox txtChatServerIP;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.ListBox MessageBox;
+        private System.Windows.Forms.ListBox messageBox;
 
         private System.Windows.Forms.TextBox txtMessageToBeSend;
         private System.Windows.Forms.Button btnSend;
@@ -148,5 +157,6 @@
 
     private System.Windows.Forms.GroupBox clientsConnectedGroupBox;
     private System.Windows.Forms.ListBox clientsConnected;
+    private System.Windows.Forms.Button btnStopServer;
   }
 }

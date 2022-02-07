@@ -151,7 +151,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnStartServer.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="txtMessageToBeSend.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -178,7 +178,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;txtMessageToBeSend.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="btnSend.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;btnSend.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="connectServerGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -262,7 +262,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;connectServerGroupBox.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="btnConnect.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 8.25pt</value>
@@ -318,35 +318,35 @@
   <data name="&gt;&gt;txtChatServerIP.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="MessageBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="messageBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="MessageBox.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="messageBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 8.25pt</value>
   </data>
-  <data name="MessageBox.ItemHeight" type="System.Int32, mscorlib">
+  <data name="messageBox.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="MessageBox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="messageBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 51</value>
   </data>
-  <data name="MessageBox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="messageBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>549, 349</value>
   </data>
-  <data name="MessageBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="messageBox.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;MessageBox.Name" xml:space="preserve">
-    <value>MessageBox</value>
+  <data name="&gt;&gt;messageBox.Name" xml:space="preserve">
+    <value>messageBox</value>
   </data>
-  <data name="&gt;&gt;MessageBox.Type" xml:space="preserve">
+  <data name="&gt;&gt;messageBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;MessageBox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;messageBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;MessageBox.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;messageBox.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -379,16 +379,10 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
-  <data name="clientsConnected.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
-  </data>
-  <data name="clientsConnected.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 199</value>
-  </data>
-  <data name="clientsConnected.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="clientsConnectedGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="&gt;&gt;clientsConnected.Name" xml:space="preserve">
     <value>clientsConnected</value>
@@ -403,10 +397,10 @@
     <value>0</value>
   </data>
   <data name="clientsConnectedGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>567, 215</value>
+    <value>567, 120</value>
   </data>
   <data name="clientsConnectedGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 223</value>
+    <value>221, 318</value>
   </data>
   <data name="clientsConnectedGroupBox.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -427,6 +421,57 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;clientsConnectedGroupBox.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="clientsConnected.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="clientsConnected.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 290</value>
+  </data>
+  <data name="clientsConnected.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;clientsConnected.Name" xml:space="preserve">
+    <value>clientsConnected</value>
+  </data>
+  <data name="&gt;&gt;clientsConnected.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;clientsConnected.Parent" xml:space="preserve">
+    <value>clientsConnectedGroupBox</value>
+  </data>
+  <data name="&gt;&gt;clientsConnected.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnStopServer.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnStopServer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 8.25pt</value>
+  </data>
+  <data name="btnStopServer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>567, 51</value>
+  </data>
+  <data name="btnStopServer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 59</value>
+  </data>
+  <data name="btnStopServer.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="btnStopServer.Text" xml:space="preserve">
+    <value>Stop Server</value>
+  </data>
+  <data name="&gt;&gt;btnStopServer.Name" xml:space="preserve">
+    <value>btnStopServer</value>
+  </data>
+  <data name="&gt;&gt;btnStopServer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStopServer.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;btnStopServer.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

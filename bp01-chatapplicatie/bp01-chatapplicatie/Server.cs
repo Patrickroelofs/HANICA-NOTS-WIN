@@ -15,8 +15,14 @@ namespace bp01_chatapplicatie
     private readonly IPAddress _ipAdress = IPAddress.Any;
     private readonly TcpListener _server;
 
-    public Server()
+    public static List<TcpClient> Clients = new List<TcpClient>();
+
+    public delegate void UpdateDisplayDelegate(string input);
+    private readonly UpdateDisplayDelegate _updateDisplay;
+
+    public Server(int port, UpdateDisplayDelegate updateDisplayDelegate)
     {
+      this._updateDisplay = updateDisplayDelegate;
       _server = new TcpListener(new IPEndPoint(_ipAdress, 3000));
     }
 
@@ -24,26 +30,32 @@ namespace bp01_chatapplicatie
     {
       try
       {
+        _updateDisplay("Listening for Clients");
         _server.Start();
 
-        Thread thread = new Thread(delegate ()
-        {
-          while(true)
-          {
-            Debug.WriteLine("Poggers");
-          }
-        });
       } catch (Exception ex)
       {
+        _updateDisplay("Cannot create server... Woops!");
         Debug.WriteLine(ex);
-        stopServer();
       }
     }
 
     public void stopServer()
     {
-      Debug.WriteLine("STOPPING SERVER");
-      _server.Stop();
+      try
+      {
+        _updateDisplay("Stopped Server");
+        _server.Stop();
+      } 
+      catch (Exception ex)
+      {
+        Debug.WriteLine(ex);
+      }
+    }
+
+    public void sendMessage(string input)
+    {
+      _updateDisplay(input);
     }
   }
 }
