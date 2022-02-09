@@ -9,6 +9,7 @@ namespace bp01_chatapplicatie
   public class Client
   {
     private NetworkStream _networkStream;
+    private DataParser _dataParser;
     public delegate void UpdateDisplayDelegate(string input);
     private readonly UpdateDisplayDelegate _updateDisplayDelegate;
 
@@ -24,6 +25,14 @@ namespace bp01_chatapplicatie
           client.Connect(new IPEndPoint(ipAddress, port));
           _networkStream = client.GetStream();
 
+          _dataParser = new DataParser(client, delegate(string input)
+          {
+            updateDisplayDelegate(input);
+          });
+        }
+        catch (SocketException ex)
+        {
+          _updateDisplayDelegate(ex.Message);
         }
         catch (Exception ex)
         {
@@ -32,6 +41,11 @@ namespace bp01_chatapplicatie
       });
 
       thread.Start();
+    }
+
+    public void SendMessage(string message)
+    {
+      _dataParser.SendMessages(_networkStream, message);
     }
   }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace bp01_chatapplicatie
 {
@@ -19,22 +20,32 @@ namespace bp01_chatapplicatie
     private void btnConnect_Click(object sender, EventArgs e)
     {
       _updateDisplayDelegate("Connecting to server...");
-      _client = new Client(IPAddress.Parse(txtChatServerIP.Text), 3000, _updateDisplayDelegate);
+      _client = new Client(IPAddress.Parse("127.0.0.1"), 3000, _updateDisplayDelegate);
     }
 
     private void btnSend_Click(object sender, EventArgs e)
     {
-      if(_server != null)
+      if (_server != null)
       {
         _server.sendMessage(txtMessageToBeSend.Text);
+      } 
+      else
+      {
+        try
+        {
+          _client.SendMessage(txtMessageToBeSend.Text);
+        } catch (Exception ex)
+        {
+          Debug.WriteLine(ex.Message);
+        }
       }
     }
 
     private void btnStartServer_Click(object sender, EventArgs e)
     {
-      using(ServerForm form = new ServerForm())
+      using (ServerForm form = new ServerForm())
       {
-        if(form.ShowDialog() == DialogResult.OK)
+        if (form.ShowDialog() == DialogResult.OK)
         {
           _server = new Server(3000, _updateDisplayDelegate);
           _server.startServer();
@@ -45,9 +56,6 @@ namespace bp01_chatapplicatie
 
           // Disable Connect to Server groupbox
           connectServerGroupBox.Visible = false;
-
-          // Enable Clients Connected Groupbox
-          clientsConnectedGroupBox.Visible = true;
         }
       }
     }
@@ -62,14 +70,14 @@ namespace bp01_chatapplicatie
 
       // Disable Connect to Server groupbox
       connectServerGroupBox.Visible = true;
-
-      // Enable Clients Connected Groupbox
-      clientsConnectedGroupBox.Visible = false;
     }
 
     private void _updateDisplayDelegate(string input)
     {
-      messageBox.Items.Add(input);
+      Invoke(new Action(() =>
+      {
+        messageBox.Items.Add(input);
+      }));
     }
   }
 }

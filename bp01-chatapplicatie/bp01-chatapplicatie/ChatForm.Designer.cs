@@ -38,11 +38,8 @@
       this.txtChatServerIP = new System.Windows.Forms.TextBox();
       this.messageBox = new System.Windows.Forms.ListBox();
       this.label2 = new System.Windows.Forms.Label();
-      this.clientsConnectedGroupBox = new System.Windows.Forms.GroupBox();
-      this.clientsConnected = new System.Windows.Forms.ListBox();
       this.btnStopServer = new System.Windows.Forms.Button();
       this.connectServerGroupBox.SuspendLayout();
-      this.clientsConnectedGroupBox.SuspendLayout();
       this.SuspendLayout();
       // 
       // btnStartServer
@@ -99,20 +96,6 @@
       this.label2.ForeColor = System.Drawing.Color.Yellow;
       this.label2.Name = "label2";
       // 
-      // clientsConnectedGroupBox
-      // 
-      resources.ApplyResources(this.clientsConnectedGroupBox, "clientsConnectedGroupBox");
-      this.clientsConnectedGroupBox.BackColor = System.Drawing.Color.Transparent;
-      this.clientsConnectedGroupBox.Controls.Add(this.clientsConnected);
-      this.clientsConnectedGroupBox.Name = "clientsConnectedGroupBox";
-      this.clientsConnectedGroupBox.TabStop = false;
-      // 
-      // clientsConnected
-      // 
-      this.clientsConnected.FormattingEnabled = true;
-      resources.ApplyResources(this.clientsConnected, "clientsConnected");
-      this.clientsConnected.Name = "clientsConnected";
-      // 
       // btnStopServer
       // 
       resources.ApplyResources(this.btnStopServer, "btnStopServer");
@@ -125,7 +108,6 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
       resources.ApplyResources(this, "$this");
       this.Controls.Add(this.btnStopServer);
-      this.Controls.Add(this.clientsConnectedGroupBox);
       this.Controls.Add(this.label2);
       this.Controls.Add(this.messageBox);
       this.Controls.Add(this.connectServerGroupBox);
@@ -135,7 +117,6 @@
       this.Name = "ChatForm";
       this.connectServerGroupBox.ResumeLayout(false);
       this.connectServerGroupBox.PerformLayout();
-      this.clientsConnectedGroupBox.ResumeLayout(false);
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -154,9 +135,6 @@
         private System.Windows.Forms.Button btnStartServer;
 
     #endregion
-
-    private System.Windows.Forms.GroupBox clientsConnectedGroupBox;
-    private System.Windows.Forms.ListBox clientsConnected;
     private System.Windows.Forms.Button btnStopServer;
   }
 }
