@@ -12,16 +12,14 @@ namespace bp01_chatapplicatie
 {
   public partial class ServerForm : Form
   {
+    public string ValueForUsername { get; set; }
+    public string ValueForIP { get; set; }
+    public int ValueForPort { get; set; }
+    public string ValueForBufferSize { get; set; }
 
     public ServerForm()
     {
       InitializeComponent();
-
-      //Disable all settings during startup.
-      serverName.Enabled = false;
-      serverIP.Enabled = false;
-      serverPort.Enabled = false;
-      serverBufferSize.Enabled = false;
 
       // Set result of dialog to OK so that ChatForm can pick it up
       startServer.DialogResult = DialogResult.OK;
@@ -49,7 +47,10 @@ namespace bp01_chatapplicatie
 
     private void startServer_Click(object sender, EventArgs e)
     {
-
+      ValueForUsername = serverUsername.Text;
+      ValueForIP = serverIP.Text;
+      ValueForPort = ParsersAndValidators.ParsePortStringToPortInt(serverPort.Text);
+      ValueForBufferSize = serverBufferSize.Text;
     }
   }
 }

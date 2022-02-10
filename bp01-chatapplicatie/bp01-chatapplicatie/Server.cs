@@ -22,6 +22,11 @@ namespace bp01_chatapplicatie
 
     private bool _serverRunning;
 
+    public Server(string ip, int port)
+    {
+      _tcpListener = new TcpListener(new IPEndPoint(IPAddress.Any, port));
+    }
+
     private void UpdateClients(TcpClient tcpClient)
     {
       if(_clientsConnected.Count > 0 && _clientsConnected.Contains(tcpClient))
@@ -35,14 +40,29 @@ namespace bp01_chatapplicatie
       // TODO: Wipe client list when needed
     }
 
-    private void UpdateMessage(string message)
+    private void AddMessage(string message)
     {
       // TODO: Add message to chat
     }
 
-    private void StartServer()
+    public async Task StartServer()
     {
       // TODO: Start Server
+      // TODO: Check if input fields are correct e.g (port > 65535) etc
+      // TODO: Add IPAdress input field to tcpListener
+      try
+      {
+        _tcpListener.Start();
+        _serverRunning = true;
+        
+        AddMessage("Server started...");
+        
+        // TODO: Wait for clients to connect
+      }
+      catch (Exception ex)
+      {
+        throw new Exception(ex.Message);
+      }
     }
 
     private void StopServer()

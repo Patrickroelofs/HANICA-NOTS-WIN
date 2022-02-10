@@ -37,7 +37,7 @@
       this.serverBufferSize = new System.Windows.Forms.TextBox();
       this.serverPort = new System.Windows.Forms.TextBox();
       this.serverIP = new System.Windows.Forms.TextBox();
-      this.serverName = new System.Windows.Forms.TextBox();
+      this.serverUsername = new System.Windows.Forms.TextBox();
       this.groupBox1.SuspendLayout();
       this.SuspendLayout();
       // 
@@ -53,7 +53,7 @@
       this.groupBox1.Controls.Add(this.serverBufferSize);
       this.groupBox1.Controls.Add(this.serverPort);
       this.groupBox1.Controls.Add(this.serverIP);
-      this.groupBox1.Controls.Add(this.serverName);
+      this.groupBox1.Controls.Add(this.serverUsername);
       this.groupBox1.Location = new System.Drawing.Point(12, 12);
       this.groupBox1.Name = "groupBox1";
       this.groupBox1.Size = new System.Drawing.Size(326, 157);
@@ -138,15 +138,15 @@
       this.serverIP.Text = "127.0.0.1";
       this.serverIP.TextChanged += new System.EventHandler(this.serverIP_TextChanged);
       // 
-      // serverName
+      // serverUsername
       // 
-      this.serverName.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-      this.serverName.Location = new System.Drawing.Point(116, 19);
-      this.serverName.Name = "serverName";
-      this.serverName.Size = new System.Drawing.Size(204, 20);
-      this.serverName.TabIndex = 0;
-      this.serverName.Text = "Patrick";
-      this.serverName.TextChanged += new System.EventHandler(this.serverName_TextChanged);
+      this.serverUsername.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverUsername.Location = new System.Drawing.Point(116, 19);
+      this.serverUsername.Name = "serverUsername";
+      this.serverUsername.Size = new System.Drawing.Size(204, 20);
+      this.serverUsername.TabIndex = 0;
+      this.serverUsername.Text = "Patrick";
+      this.serverUsername.TextChanged += new System.EventHandler(this.serverName_TextChanged);
       // 
       // ServerForm
       // 
@@ -176,6 +176,6 @@
     private System.Windows.Forms.TextBox serverBufferSize;
     private System.Windows.Forms.TextBox serverPort;
     private System.Windows.Forms.TextBox serverIP;
-    private System.Windows.Forms.TextBox serverName;
+    private System.Windows.Forms.TextBox serverUsername;
   }
 }

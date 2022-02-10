@@ -38,13 +38,14 @@ namespace bp01_chatapplicatie
       
     }
 
-    private void btnStartServer_Click(object sender, EventArgs e)
+    private async void btnStartServer_Click(object sender, EventArgs e)
     {
       using (ServerForm form = new ServerForm())
       {
         if (form.ShowDialog() == DialogResult.OK)
         {
-
+          _server = new Server("", form.ValueForPort);
+          await _server.StartServer();
 
           // Disable Start Server button
           btnStartServer.Visible = false;
