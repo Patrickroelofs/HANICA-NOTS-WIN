@@ -17,6 +17,7 @@ namespace bp01_chatapplicatie
 
     private TcpClient _client;
     private TcpListener _tcpListener;
+    private NetworkStream _networkStream;
     private List<TcpClient> clientsConnected = new List<TcpClient>();
 
     public ServerForm()
@@ -48,6 +49,12 @@ namespace bp01_chatapplicatie
       _tcpListener = new TcpListener(IPAddress.Any, 3000);
       _tcpListener.Start();
       
+      // Create own client so Server can also chat.
+      _client = new TcpClient();
+      await _client.ConnectAsync("127.0.0.1", 3000);
+      
+      _networkStream = _client.GetStream();
+      
       startServerClick.Enabled = false;
       serverBufferSize.Enabled = false;
       serverUsername.Enabled = false;
@@ -64,9 +71,16 @@ namespace bp01_chatapplicatie
       }
     }
     
-    private void serverButtonSend_Click(object sender, EventArgs e)
+    private async void serverButtonSend_Click(object sender, EventArgs e)
     {
-      AddMessage(serverMessageInput.Text);
+      if (_networkStream.CanWrite)
+      {
+        byte[] messageByteArray = Encoding.ASCII.GetBytes(serverUsername.Text + " : " + serverMessageInput.Text);
+        await _networkStream.WriteAsync(messageByteArray, 0, messageByteArray.Length);
+      }
+      
+      serverMessageInput.Clear();
+      serverMessageInput.Focus();
     }
 
     private async void MessageReceiver(TcpClient client)
