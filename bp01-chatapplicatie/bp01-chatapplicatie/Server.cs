@@ -1,92 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Diagnostics;
+using System.Windows;
 
 namespace bp01_chatapplicatie
 {
   class Server
   {
-    private readonly IPAddress _ipAdress = IPAddress.Parse("127.0.0.1");
-    private DataParser _dataParser;
-    private readonly TcpListener _server;
+    private TcpClient _tcpClient;
+    private TcpListener _tcpListener;
+    private NetworkStream _networkStream;
+    private List<TcpClient> _clientsConnected = new List<TcpClient>();
 
-    public static List<TcpClient> Clients = new List<TcpClient>();
+    private bool _serverRunning;
 
-    public delegate void UpdateDisplayDelegate(string input);
-    private readonly UpdateDisplayDelegate _updateDisplay;
-
-    public Server(int port, UpdateDisplayDelegate updateDisplayDelegate)
+    private void UpdateClients(TcpClient tcpClient)
     {
-      this._updateDisplay = updateDisplayDelegate;
-      _server = new TcpListener(new IPEndPoint(_ipAdress, 3000));
-    }
-
-    public void startServer()
-    {
-      try
+      if(_clientsConnected.Count > 0 && _clientsConnected.Contains(tcpClient))
       {
-        _updateDisplay("Listening for Clients");
-        _server.Start();
-
-        Thread thread = new Thread(delegate ()
-        {
-          while(true)
-          {
-            try
-            {
-              if (!_server.Pending()) continue;
-              var client = _server.AcceptTcpClient();
-              Clients.Add(client);
-
-              foreach(var clientItem in Clients)
-              {
-                _dataParser = new DataParser(clientItem, delegate (string input)
-                {
-                  _updateDisplay(input);
-                });
-              }
-
-            } catch(Exception ex)
-            {
-              Debug.WriteLine(ex);
-            }
-          }
-        });
-
-        thread.Start();
-
-      } catch (Exception ex)
-      {
-        _updateDisplay("Cannot create server... Woops!");
-        Debug.WriteLine(ex);
-      }
-    }
-
-    public void stopServer()
-    {
-      try
-      {
-        _updateDisplay("Stopped Server");
-        _server.Stop();
+        // TODO: Update client list
       } 
-      catch (Exception ex)
-      {
-        Debug.WriteLine(ex);
-      }
     }
 
-    public void sendMessage(string input)
+    private void WipeClients()
     {
-      foreach(var stream in Clients.Select(client => client.GetStream()))
-      {
-        _dataParser.SendMessages(stream, input);
-      }
+      // TODO: Wipe client list when needed
+    }
+
+    private void UpdateMessage(string message)
+    {
+      // TODO: Add message to chat
+    }
+
+    private void StartServer()
+    {
+      // TODO: Start Server
     }
   }
 }

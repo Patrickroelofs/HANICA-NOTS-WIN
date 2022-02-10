@@ -65,6 +65,8 @@
       // 
       // startServer
       // 
+      this.startServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
       this.startServer.Location = new System.Drawing.Point(245, 123);
       this.startServer.Name = "startServer";
       this.startServer.Size = new System.Drawing.Size(75, 23);
