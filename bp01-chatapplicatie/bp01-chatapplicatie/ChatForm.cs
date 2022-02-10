@@ -37,6 +37,7 @@ namespace bp01_chatapplicatie
       
       _networkStream = _client.GetStream();
 
+      connectServerGroupBox.Visible = false;
       await Task.Run(MessageReceiver);
     }
 
