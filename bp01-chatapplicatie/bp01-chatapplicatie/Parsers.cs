@@ -1,6 +1,6 @@
 ﻿namespace bp01_chatapplicatie
 {
-    public class ParsersAndValidators
+    public class Parsers
     {
         public static int ParsePortStringToPortInt(string portString)
         {

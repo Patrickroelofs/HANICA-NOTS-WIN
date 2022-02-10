@@ -54,7 +54,7 @@
       <DependentUpon>ChatForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Client.cs" />
-    <Compile Include="ParsersAndValidators.cs" />
+    <Compile Include="Parsers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server.cs" />

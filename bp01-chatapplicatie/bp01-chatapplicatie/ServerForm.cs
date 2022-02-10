@@ -49,7 +49,7 @@ namespace bp01_chatapplicatie
     {
       ValueForUsername = serverUsername.Text;
       ValueForIP = serverIP.Text;
-      ValueForPort = ParsersAndValidators.ParsePortStringToPortInt(serverPort.Text);
+      ValueForPort = Parsers.ParsePortStringToPortInt(serverPort.Text);
       ValueForBufferSize = serverBufferSize.Text;
     }
   }
