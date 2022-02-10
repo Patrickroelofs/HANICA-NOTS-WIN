@@ -44,7 +44,7 @@ namespace bp01_chatapplicatie
     {
       if (_networkStream.CanWrite)
       {
-        byte[] messageByteArray = Encoding.ASCII.GetBytes(username.Text + " : " + txtMessageToBeSend.Text);
+        byte[] messageByteArray = Encoding.ASCII.GetBytes(inputUsername.Text + " : " + txtMessageToBeSend.Text);
         await _networkStream.WriteAsync(messageByteArray, 0, messageByteArray.Length);
       }
       
