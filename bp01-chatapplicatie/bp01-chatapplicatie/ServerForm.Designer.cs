@@ -41,11 +41,14 @@
       this.clientsConnectedBox = new System.Windows.Forms.GroupBox();
       this.clientsConnectedListBox = new System.Windows.Forms.ListBox();
       this.SendMessageBox = new System.Windows.Forms.GroupBox();
-      this.serverMessageInput = new System.Windows.Forms.TextBox();
       this.serverButtonSend = new System.Windows.Forms.Button();
+      this.serverMessageInput = new System.Windows.Forms.TextBox();
+      this.chatBox = new System.Windows.Forms.GroupBox();
+      this.chatListBox = new System.Windows.Forms.ListBox();
       this.groupBox1.SuspendLayout();
       this.clientsConnectedBox.SuspendLayout();
       this.SendMessageBox.SuspendLayout();
+      this.chatBox.SuspendLayout();
       this.SuspendLayout();
       // 
       // groupBox1
@@ -158,9 +161,9 @@
       // clientsConnectedBox
       // 
       this.clientsConnectedBox.Controls.Add(this.clientsConnectedListBox);
-      this.clientsConnectedBox.Location = new System.Drawing.Point(352, 12);
+      this.clientsConnectedBox.Location = new System.Drawing.Point(12, 232);
       this.clientsConnectedBox.Name = "clientsConnectedBox";
-      this.clientsConnectedBox.Size = new System.Drawing.Size(310, 410);
+      this.clientsConnectedBox.Size = new System.Drawing.Size(334, 190);
       this.clientsConnectedBox.TabIndex = 1;
       this.clientsConnectedBox.TabStop = false;
       this.clientsConnectedBox.Text = "Clients Connected";
@@ -170,7 +173,7 @@
       this.clientsConnectedListBox.FormattingEnabled = true;
       this.clientsConnectedListBox.Location = new System.Drawing.Point(6, 22);
       this.clientsConnectedListBox.Name = "clientsConnectedListBox";
-      this.clientsConnectedListBox.Size = new System.Drawing.Size(298, 381);
+      this.clientsConnectedListBox.Size = new System.Drawing.Size(322, 160);
       this.clientsConnectedListBox.TabIndex = 0;
       // 
       // SendMessageBox
@@ -184,13 +187,6 @@
       this.SendMessageBox.TabStop = false;
       this.SendMessageBox.Text = "Send Message";
       // 
-      // serverMessageInput
-      // 
-      this.serverMessageInput.Location = new System.Drawing.Point(6, 19);
-      this.serverMessageInput.Name = "serverMessageInput";
-      this.serverMessageInput.Size = new System.Drawing.Size(243, 20);
-      this.serverMessageInput.TabIndex = 0;
-      // 
       // serverButtonSend
       // 
       this.serverButtonSend.Location = new System.Drawing.Point(253, 17);
@@ -200,12 +196,38 @@
       this.serverButtonSend.Text = "Send";
       this.serverButtonSend.UseVisualStyleBackColor = true;
       // 
+      // serverMessageInput
+      // 
+      this.serverMessageInput.Location = new System.Drawing.Point(6, 19);
+      this.serverMessageInput.Name = "serverMessageInput";
+      this.serverMessageInput.Size = new System.Drawing.Size(243, 20);
+      this.serverMessageInput.TabIndex = 0;
+      // 
+      // chatBox
+      // 
+      this.chatBox.Controls.Add(this.chatListBox);
+      this.chatBox.Location = new System.Drawing.Point(352, 12);
+      this.chatBox.Name = "chatBox";
+      this.chatBox.Size = new System.Drawing.Size(310, 410);
+      this.chatBox.TabIndex = 3;
+      this.chatBox.TabStop = false;
+      this.chatBox.Text = "Chats";
+      // 
+      // chatListBox
+      // 
+      this.chatListBox.FormattingEnabled = true;
+      this.chatListBox.Location = new System.Drawing.Point(6, 22);
+      this.chatListBox.Name = "chatListBox";
+      this.chatListBox.Size = new System.Drawing.Size(298, 381);
+      this.chatListBox.TabIndex = 0;
+      // 
       // ServerForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
       this.ClientSize = new System.Drawing.Size(674, 434);
+      this.Controls.Add(this.chatBox);
       this.Controls.Add(this.SendMessageBox);
       this.Controls.Add(this.clientsConnectedBox);
       this.Controls.Add(this.groupBox1);
@@ -218,8 +240,12 @@
       this.clientsConnectedBox.ResumeLayout(false);
       this.SendMessageBox.ResumeLayout(false);
       this.SendMessageBox.PerformLayout();
+      this.chatBox.ResumeLayout(false);
       this.ResumeLayout(false);
     }
+
+    private System.Windows.Forms.GroupBox chatBox;
+    private System.Windows.Forms.ListBox chatListBox;
 
     private System.Windows.Forms.GroupBox SendMessageBox;
     private System.Windows.Forms.TextBox serverMessageInput;

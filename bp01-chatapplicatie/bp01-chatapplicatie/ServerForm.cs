@@ -17,6 +17,7 @@ namespace bp01_chatapplicatie
 
     private TcpClient _client;
     private TcpListener _tcpListener;
+    private List<TcpClient> clientsConnected = new List<TcpClient>();
 
     public ServerForm()
     {
@@ -58,7 +59,46 @@ namespace bp01_chatapplicatie
       while (true)
       {
         _client = await _tcpListener.AcceptTcpClientAsync();
+
+        clientsConnected.Add(_client);
+        await Task.Run(() => MessageReceiver(_client));
       }
+    }
+
+    private async void MessageReceiver(TcpClient client)
+    {
+      byte[] buffer = new byte[1024];
+      NetworkStream networkStream = _client.GetStream();
+
+      while (networkStream.CanRead)
+      {
+        int bytes = await networkStream.ReadAsync(buffer, 0, 1024);
+        string message = Encoding.ASCII.GetString(buffer, 0, bytes);
+
+        AddMessage(message);
+        await SendMessageToClients(message);
+      }
+    }
+
+    private async Task SendMessageToClients(string message)
+    {
+      if (clientsConnected.Count > 0)
+      {
+        foreach (TcpClient client in clientsConnected)
+        {
+          NetworkStream networkStream = client.GetStream();
+          if (networkStream.CanRead)
+          {
+            byte[] serverMessageByteArray = Encoding.ASCII.GetBytes(message);
+            await networkStream.WriteAsync(serverMessageByteArray, 0, serverMessageByteArray.Length);
+          }
+        }
+      }
+    }
+    
+    private void AddMessage(string message)
+    {
+      chatListBox.Invoke(new Action(() => chatListBox.Items.Add(message)));
     }
   }
 }
