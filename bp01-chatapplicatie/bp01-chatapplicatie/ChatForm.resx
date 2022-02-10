@@ -213,6 +213,54 @@
   <data name="connectServerGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
+  <data name="PortLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 65</value>
+  </data>
+  <data name="PortLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="PortLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="PortLabel.Text" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="&gt;&gt;PortLabel.Name" xml:space="preserve">
+    <value>PortLabel</value>
+  </data>
+  <data name="&gt;&gt;PortLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PortLabel.Parent" xml:space="preserve">
+    <value>connectServerGroupBox</value>
+  </data>
+  <data name="&gt;&gt;PortLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="txtChatServerPort.Location" type="System.Drawing.Point, System.Drawing">
+    <value>140, 85</value>
+  </data>
+  <data name="txtChatServerPort.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="txtChatServerPort.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="txtChatServerPort.Text" xml:space="preserve">
+    <value>3000</value>
+  </data>
+  <data name="&gt;&gt;txtChatServerPort.Name" xml:space="preserve">
+    <value>txtChatServerPort</value>
+  </data>
+  <data name="&gt;&gt;txtChatServerPort.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;txtChatServerPort.Parent" xml:space="preserve">
+    <value>connectServerGroupBox</value>
+  </data>
+  <data name="&gt;&gt;txtChatServerPort.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="inputUsername.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 39</value>
   </data>
@@ -235,7 +283,7 @@
     <value>connectServerGroupBox</value>
   </data>
   <data name="&gt;&gt;inputUsername.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="username.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 19</value>
@@ -259,7 +307,7 @@
     <value>connectServerGroupBox</value>
   </data>
   <data name="&gt;&gt;username.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="ipLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 65</value>
@@ -283,7 +331,7 @@
     <value>connectServerGroupBox</value>
   </data>
   <data name="&gt;&gt;ipLabel.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="btnConnect.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 8.25pt</value>
@@ -310,7 +358,7 @@
     <value>connectServerGroupBox</value>
   </data>
   <data name="&gt;&gt;btnConnect.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="txtChatServerIP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 8.25pt</value>
@@ -319,7 +367,7 @@
     <value>6, 85</value>
   </data>
   <data name="txtChatServerIP.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 23</value>
+    <value>128, 23</value>
   </data>
   <data name="txtChatServerIP.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -337,7 +385,7 @@
     <value>connectServerGroupBox</value>
   </data>
   <data name="&gt;&gt;txtChatServerIP.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="connectServerGroupBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 8.25pt</value>

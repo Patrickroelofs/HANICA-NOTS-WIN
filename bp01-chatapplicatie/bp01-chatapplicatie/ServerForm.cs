@@ -17,12 +17,16 @@ namespace bp01_chatapplicatie
 
     private TcpClient _client;
     private TcpListener _tcpListener;
-    private NetworkStream _networkStream;
     private List<TcpClient> clientsConnected = new List<TcpClient>();
 
     public ServerForm()
     {
       InitializeComponent();
+      
+      // disable stop server button on startup
+      stopServerButton.Visible = false;
+      SendMessageBox.Visible = false;
+      clientsConnectedBox.Visible = false;
     }
 
     private void serverName_TextChanged(object sender, EventArgs e)
@@ -48,18 +52,15 @@ namespace bp01_chatapplicatie
     {
       _tcpListener = new TcpListener(IPAddress.Any, 3000);
       _tcpListener.Start();
-      
-      // Create own client so Server can also chat.
-      _client = new TcpClient();
-      await _client.ConnectAsync("127.0.0.1", 3000);
-      
-      _networkStream = _client.GetStream();
-      
+
       startServerClick.Enabled = false;
       serverBufferSize.Enabled = false;
       serverUsername.Enabled = false;
       serverPort.Enabled = false;
       serverIP.Enabled = false;
+
+      startServerClick.Visible = false;
+      stopServerButton.Visible = true;
 
 
       while (true)
@@ -70,27 +71,15 @@ namespace bp01_chatapplicatie
         await Task.Run(() => MessageReceiver(_client));
       }
     }
-    
-    private async void serverButtonSend_Click(object sender, EventArgs e)
-    {
-      if (_networkStream.CanWrite)
-      {
-        byte[] messageByteArray = Encoding.ASCII.GetBytes(serverUsername.Text + " : " + serverMessageInput.Text);
-        await _networkStream.WriteAsync(messageByteArray, 0, messageByteArray.Length);
-      }
-      
-      serverMessageInput.Clear();
-      serverMessageInput.Focus();
-    }
 
     private async void MessageReceiver(TcpClient client)
     {
-      byte[] buffer = new byte[1024];
+      byte[] buffer = new byte[Parsers.ParsePort(serverBufferSize.Text)];
       NetworkStream networkStream = client.GetStream();
 
       while (networkStream.CanRead)
       {
-        int bytes = await networkStream.ReadAsync(buffer, 0, 1024);
+        int bytes = await networkStream.ReadAsync(buffer, 0, Parsers.ParsePort(serverBufferSize.Text));
         string message = Encoding.ASCII.GetString(buffer, 0, bytes);
 
         AddMessage(message);
@@ -118,6 +107,20 @@ namespace bp01_chatapplicatie
     private void AddMessage(string message)
     {
       chatListBox.Invoke(new Action(() => chatListBox.Items.Add(message)));
+    }
+
+    private async void stopServerButton_Click(object sender, EventArgs e)
+    {
+      await SendMessageToClients("Server is shutting down");
+
+
+      foreach (TcpClient client in clientsConnected)
+      {
+        client.Close();
+      }
+      
+      clientsConnected.Clear();
+      _tcpListener.Stop();
     }
   }
 }

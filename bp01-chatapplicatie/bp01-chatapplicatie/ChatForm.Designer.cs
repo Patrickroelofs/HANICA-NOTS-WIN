@@ -34,6 +34,8 @@
             this.txtMessageToBeSend = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.connectServerGroupBox = new System.Windows.Forms.GroupBox();
+            this.PortLabel = new System.Windows.Forms.Label();
+            this.txtChatServerPort = new System.Windows.Forms.TextBox();
             this.inputUsername = new System.Windows.Forms.TextBox();
             this.username = new System.Windows.Forms.Label();
             this.ipLabel = new System.Windows.Forms.Label();
@@ -68,6 +70,8 @@
             // 
             resources.ApplyResources(this.connectServerGroupBox, "connectServerGroupBox");
             this.connectServerGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.connectServerGroupBox.Controls.Add(this.PortLabel);
+            this.connectServerGroupBox.Controls.Add(this.txtChatServerPort);
             this.connectServerGroupBox.Controls.Add(this.inputUsername);
             this.connectServerGroupBox.Controls.Add(this.username);
             this.connectServerGroupBox.Controls.Add(this.ipLabel);
@@ -75,6 +79,16 @@
             this.connectServerGroupBox.Controls.Add(this.txtChatServerIP);
             this.connectServerGroupBox.Name = "connectServerGroupBox";
             this.connectServerGroupBox.TabStop = false;
+            // 
+            // PortLabel
+            // 
+            resources.ApplyResources(this.PortLabel, "PortLabel");
+            this.PortLabel.Name = "PortLabel";
+            // 
+            // txtChatServerPort
+            // 
+            resources.ApplyResources(this.txtChatServerPort, "txtChatServerPort");
+            this.txtChatServerPort.Name = "txtChatServerPort";
             // 
             // inputUsername
             // 
@@ -142,6 +156,9 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.TextBox txtChatServerPort;
+        private System.Windows.Forms.Label PortLabel;
 
         private System.Windows.Forms.Label ipLabel;
         private System.Windows.Forms.TextBox inputUsername;

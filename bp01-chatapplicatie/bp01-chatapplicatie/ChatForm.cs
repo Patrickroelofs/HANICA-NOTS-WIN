@@ -29,16 +29,24 @@ namespace bp01_chatapplicatie
 
     private async void btnConnect_Click(object sender, EventArgs e)
     {
-      btnSend.Enabled = true;
-      txtMessageToBeSend.Enabled = true;
+      try
+      {
+        _client = new TcpClient();
+        await _client.ConnectAsync(txtChatServerIP.Text, Parsers.ParsePort(txtChatServerPort.Text));
       
-      _client = new TcpClient();
-      await _client.ConnectAsync("127.0.0.1", 3000);
-      
-      _networkStream = _client.GetStream();
+        _networkStream = _client.GetStream();
 
-      connectServerGroupBox.Visible = false;
-      await Task.Run(MessageReceiver);
+        btnSend.Enabled = true;
+        btnStartServer.Visible = false;
+        txtMessageToBeSend.Enabled = true;
+        connectServerGroupBox.Visible = false;
+
+        await Task.Run(MessageReceiver);
+      }
+      catch (SocketException)
+      {
+        AddMessage("Could not connect to server");
+      }
     }
 
     private async void btnSend_Click(object sender, EventArgs e)

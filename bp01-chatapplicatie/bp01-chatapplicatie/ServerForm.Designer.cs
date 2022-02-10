@@ -29,6 +29,7 @@
     private void InitializeComponent()
     {
       this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.stopServerButton = new System.Windows.Forms.Button();
       this.startServerClick = new System.Windows.Forms.Button();
       this.label4 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
       // 
       this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+      this.groupBox1.Controls.Add(this.stopServerButton);
       this.groupBox1.Controls.Add(this.startServerClick);
       this.groupBox1.Controls.Add(this.label4);
       this.groupBox1.Controls.Add(this.label3);
@@ -70,6 +72,16 @@
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Server Settings";
+      // 
+      // stopServerButton
+      // 
+      this.stopServerButton.Location = new System.Drawing.Point(245, 123);
+      this.stopServerButton.Name = "stopServerButton";
+      this.stopServerButton.Size = new System.Drawing.Size(83, 23);
+      this.stopServerButton.TabIndex = 9;
+      this.stopServerButton.Text = "Stop Server";
+      this.stopServerButton.UseVisualStyleBackColor = true;
+      this.stopServerButton.Click += new System.EventHandler(this.stopServerButton_Click);
       // 
       // startServerClick
       // 
@@ -195,7 +207,6 @@
       this.serverButtonSend.TabIndex = 1;
       this.serverButtonSend.Text = "Send";
       this.serverButtonSend.UseVisualStyleBackColor = true;
-      this.serverButtonSend.Click += new System.EventHandler(this.serverButtonSend_Click);
       // 
       // serverMessageInput
       // 
@@ -244,6 +255,8 @@
       this.chatBox.ResumeLayout(false);
       this.ResumeLayout(false);
     }
+
+    private System.Windows.Forms.Button stopServerButton;
 
     private System.Windows.Forms.GroupBox chatBox;
     private System.Windows.Forms.ListBox chatListBox;
