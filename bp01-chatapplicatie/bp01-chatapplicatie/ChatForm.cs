@@ -37,7 +37,7 @@ namespace bp01_chatapplicatie
       
       _networkStream = _client.GetStream();
 
-      await Task.Run(() => MessageReceiver());
+      await Task.Run(MessageReceiver);
     }
 
     private async void btnSend_Click(object sender, EventArgs e)

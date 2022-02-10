@@ -195,6 +195,7 @@
       this.serverButtonSend.TabIndex = 1;
       this.serverButtonSend.Text = "Send";
       this.serverButtonSend.UseVisualStyleBackColor = true;
+      this.serverButtonSend.Click += new System.EventHandler(this.serverButtonSend_Click);
       // 
       // serverMessageInput
       // 

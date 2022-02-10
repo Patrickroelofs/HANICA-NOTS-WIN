@@ -43,7 +43,6 @@ namespace bp01_chatapplicatie
     {
 
     }
-
     private async void startServerClick_Click(object sender, EventArgs e)
     {
       _tcpListener = new TcpListener(IPAddress.Any, 3000);
@@ -63,6 +62,11 @@ namespace bp01_chatapplicatie
         clientsConnected.Add(_client);
         await Task.Run(() => MessageReceiver(_client));
       }
+    }
+    
+    private void serverButtonSend_Click(object sender, EventArgs e)
+    {
+      AddMessage(serverMessageInput.Text);
     }
 
     private async void MessageReceiver(TcpClient client)
@@ -87,6 +91,7 @@ namespace bp01_chatapplicatie
         foreach (TcpClient client in clientsConnected)
         {
           NetworkStream networkStream = client.GetStream();
+          
           if (networkStream.CanRead)
           {
             byte[] serverMessageByteArray = Encoding.ASCII.GetBytes(message);
