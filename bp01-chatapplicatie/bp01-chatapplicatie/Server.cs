@@ -44,5 +44,25 @@ namespace bp01_chatapplicatie
     {
       // TODO: Start Server
     }
+
+    private void StopServer()
+    {
+      // TODO: Stop Server
+    }
+
+    private void ReceiveData(TcpClient tcpClient, int bufferSize)
+    {
+      // TODO: Receive data from client
+    }
+
+    private void SendDisconnectMessagesToClient(TcpClient tcpClient, string message)
+    {
+      // TODO: Send Disconnect Message to Client
+    }
+
+    private void SendMessageToClients(string message)
+    {
+      // TODO: Send message to all clients
+    }
   }
 }

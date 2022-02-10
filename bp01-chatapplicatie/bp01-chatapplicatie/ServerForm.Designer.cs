@@ -43,9 +43,7 @@
       // 
       // groupBox1
       // 
-      this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.groupBox1.BackColor = System.Drawing.Color.Transparent;
       this.groupBox1.Controls.Add(this.startServer);
       this.groupBox1.Controls.Add(this.label4);
@@ -65,8 +63,7 @@
       // 
       // startServer
       // 
-      this.startServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.startServer.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.startServer.Location = new System.Drawing.Point(245, 123);
       this.startServer.Name = "startServer";
       this.startServer.Size = new System.Drawing.Size(75, 23);
@@ -107,14 +104,13 @@
       this.label1.AutoSize = true;
       this.label1.Location = new System.Drawing.Point(6, 22);
       this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(35, 13);
+      this.label1.Size = new System.Drawing.Size(55, 13);
       this.label1.TabIndex = 4;
-      this.label1.Text = "Name";
+      this.label1.Text = "Username";
       // 
       // serverBufferSize
       // 
-      this.serverBufferSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverBufferSize.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.serverBufferSize.Location = new System.Drawing.Point(116, 97);
       this.serverBufferSize.Name = "serverBufferSize";
       this.serverBufferSize.Size = new System.Drawing.Size(204, 20);
@@ -124,8 +120,7 @@
       // 
       // serverPort
       // 
-      this.serverPort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverPort.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.serverPort.Location = new System.Drawing.Point(116, 71);
       this.serverPort.Name = "serverPort";
       this.serverPort.Size = new System.Drawing.Size(204, 20);
@@ -135,8 +130,7 @@
       // 
       // serverIP
       // 
-      this.serverIP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverIP.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.serverIP.Location = new System.Drawing.Point(116, 45);
       this.serverIP.Name = "serverIP";
       this.serverIP.Size = new System.Drawing.Size(204, 20);
@@ -146,13 +140,12 @@
       // 
       // serverName
       // 
-      this.serverName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverName.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.serverName.Location = new System.Drawing.Point(116, 19);
       this.serverName.Name = "serverName";
       this.serverName.Size = new System.Drawing.Size(204, 20);
       this.serverName.TabIndex = 0;
-      this.serverName.Text = "Patricks Epische Server";
+      this.serverName.Text = "Patrick";
       this.serverName.TextChanged += new System.EventHandler(this.serverName_TextChanged);
       // 
       // ServerForm
@@ -170,7 +163,6 @@
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       this.ResumeLayout(false);
-
     }
 
     #endregion

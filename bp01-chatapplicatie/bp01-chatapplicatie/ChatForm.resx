@@ -213,62 +213,83 @@
   <data name="connectServerGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="&gt;&gt;btnConnect.Name" xml:space="preserve">
-    <value>btnConnect</value>
+  <data name="inputUsername.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 39</value>
   </data>
-  <data name="&gt;&gt;btnConnect.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="inputUsername.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 23</value>
   </data>
-  <data name="&gt;&gt;btnConnect.Parent" xml:space="preserve">
-    <value>connectServerGroupBox</value>
+  <data name="inputUsername.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;btnConnect.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="inputUsername.Text" xml:space="preserve">
+    <value>Spongebob</value>
   </data>
-  <data name="&gt;&gt;txtChatServerIP.Name" xml:space="preserve">
-    <value>txtChatServerIP</value>
+  <data name="&gt;&gt;inputUsername.Name" xml:space="preserve">
+    <value>inputUsername</value>
   </data>
-  <data name="&gt;&gt;txtChatServerIP.Type" xml:space="preserve">
+  <data name="&gt;&gt;inputUsername.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtChatServerIP.Parent" xml:space="preserve">
+  <data name="&gt;&gt;inputUsername.Parent" xml:space="preserve">
     <value>connectServerGroupBox</value>
   </data>
-  <data name="&gt;&gt;txtChatServerIP.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;inputUsername.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="connectServerGroupBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Comic Sans MS, 8.25pt</value>
+  <data name="username.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
   </data>
-  <data name="connectServerGroupBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>567, 120</value>
+  <data name="username.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 17</value>
   </data>
-  <data name="connectServerGroupBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 89</value>
-  </data>
-  <data name="connectServerGroupBox.TabIndex" type="System.Int32, mscorlib">
+  <data name="username.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="connectServerGroupBox.Text" xml:space="preserve">
-    <value>Connect to Server:</value>
+  <data name="username.Text" xml:space="preserve">
+    <value>Username</value>
   </data>
-  <data name="&gt;&gt;connectServerGroupBox.Name" xml:space="preserve">
+  <data name="&gt;&gt;username.Name" xml:space="preserve">
+    <value>username</value>
+  </data>
+  <data name="&gt;&gt;username.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;username.Parent" xml:space="preserve">
     <value>connectServerGroupBox</value>
   </data>
-  <data name="&gt;&gt;connectServerGroupBox.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;username.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;connectServerGroupBox.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="ipLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 65</value>
   </data>
-  <data name="&gt;&gt;connectServerGroupBox.ZOrder" xml:space="preserve">
+  <data name="ipLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>209, 17</value>
+  </data>
+  <data name="ipLabel.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="ipLabel.Text" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="&gt;&gt;ipLabel.Name" xml:space="preserve">
+    <value>ipLabel</value>
+  </data>
+  <data name="&gt;&gt;ipLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ipLabel.Parent" xml:space="preserve">
+    <value>connectServerGroupBox</value>
+  </data>
+  <data name="&gt;&gt;ipLabel.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="btnConnect.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 8.25pt</value>
   </data>
   <data name="btnConnect.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 51</value>
+    <value>6, 114</value>
   </data>
   <data name="btnConnect.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 27</value>
@@ -289,13 +310,13 @@
     <value>connectServerGroupBox</value>
   </data>
   <data name="&gt;&gt;btnConnect.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <data name="txtChatServerIP.Font" type="System.Drawing.Font, System.Drawing">
     <value>Comic Sans MS, 8.25pt</value>
   </data>
   <data name="txtChatServerIP.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 22</value>
+    <value>6, 85</value>
   </data>
   <data name="txtChatServerIP.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 23</value>
@@ -316,7 +337,34 @@
     <value>connectServerGroupBox</value>
   </data>
   <data name="&gt;&gt;txtChatServerIP.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>4</value>
+  </data>
+  <data name="connectServerGroupBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Comic Sans MS, 8.25pt</value>
+  </data>
+  <data name="connectServerGroupBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>567, 120</value>
+  </data>
+  <data name="connectServerGroupBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 152</value>
+  </data>
+  <data name="connectServerGroupBox.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="connectServerGroupBox.Text" xml:space="preserve">
+    <value>Connect to Server:</value>
+  </data>
+  <data name="&gt;&gt;connectServerGroupBox.Name" xml:space="preserve">
+    <value>connectServerGroupBox</value>
+  </data>
+  <data name="&gt;&gt;connectServerGroupBox.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;connectServerGroupBox.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;connectServerGroupBox.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="messageBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
