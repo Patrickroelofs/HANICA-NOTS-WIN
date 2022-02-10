@@ -8,8 +8,6 @@ namespace bp01_chatapplicatie
 {
   public partial class ChatForm : Form
   {
-    private Client _client;
-    private Server _server;
 
     public ChatForm()
     {
@@ -25,7 +23,6 @@ namespace bp01_chatapplicatie
 
     private void btnConnect_Click(object sender, EventArgs e)
     {
-
     }
 
     private void btnSend_Click(object sender, EventArgs e)
@@ -38,27 +35,14 @@ namespace bp01_chatapplicatie
       
     }
 
-    private async void btnStartServer_Click(object sender, EventArgs e)
+    private void btnStartServer_Click(object sender, EventArgs e)
     {
-      using (ServerForm form = new ServerForm())
-      {
-        if (form.ShowDialog() == DialogResult.OK)
-        {
-          _server = new Server("", form.ValueForPort);
-          await _server.StartServer();
+      connectServerGroupBox.Visible = false;
+      txtMessageToBeSend.Enabled = false;
+      btnSend.Enabled = false;
 
-          // Disable Start Server button
-          btnStartServer.Visible = false;
-          btnStopServer.Visible = true;
-
-          // Disable Connect to Server groupbox
-          connectServerGroupBox.Visible = false;
-          
-          // Enable Chat box
-          btnSend.Enabled = true;
-          txtMessageToBeSend.Enabled = true;
-        }
-      }
+      ServerForm form = new ServerForm();
+      form.ShowDialog();
     }
 
     private void btnStopServer_Click(object sender, EventArgs e)
