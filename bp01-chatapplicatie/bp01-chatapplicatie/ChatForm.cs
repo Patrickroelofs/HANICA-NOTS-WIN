@@ -44,7 +44,7 @@ namespace bp01_chatapplicatie
     {
       if (_networkStream.CanWrite)
       {
-        byte[] messageByteArray = Encoding.ASCII.GetBytes(username + " : " + txtMessageToBeSend);
+        byte[] messageByteArray = Encoding.ASCII.GetBytes(username.Text + " : " + txtMessageToBeSend.Text);
         await _networkStream.WriteAsync(messageByteArray, 0, messageByteArray.Length);
       }
       
@@ -63,6 +63,7 @@ namespace bp01_chatapplicatie
       txtMessageToBeSend.Enabled = false;
       btnSend.Enabled = false;
 
+      Hide();
       ServerForm form = new ServerForm();
       form.ShowDialog();
     }

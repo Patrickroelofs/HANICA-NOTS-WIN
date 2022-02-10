@@ -68,7 +68,7 @@ namespace bp01_chatapplicatie
     private async void MessageReceiver(TcpClient client)
     {
       byte[] buffer = new byte[1024];
-      NetworkStream networkStream = _client.GetStream();
+      NetworkStream networkStream = client.GetStream();
 
       while (networkStream.CanRead)
       {
