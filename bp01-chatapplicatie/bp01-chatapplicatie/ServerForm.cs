@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -75,15 +76,20 @@ namespace bp01_chatapplicatie
     private async void MessageReceiver(TcpClient client)
     {
       byte[] buffer = new byte[Parsers.ParsePort(serverBufferSize.Text)];
+      StringBuilder completeMessage = new StringBuilder();
       NetworkStream networkStream = client.GetStream();
-
-      while (networkStream.CanRead)
+      int numberOfBytesRead;
+    
+      if (networkStream.CanRead)
       {
-        int bytes = await networkStream.ReadAsync(buffer, 0, Parsers.ParsePort(serverBufferSize.Text));
-        string message = Encoding.ASCII.GetString(buffer, 0, bytes);
-
-        AddMessage(message);
-        await SendMessageToClients(message);
+        do
+        {
+          numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
+          completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
+        } while (networkStream.DataAvailable);
+      
+        AddMessage(numberOfBytesRead + " : " + completeMessage);
+        await SendMessageToClients(numberOfBytesRead + " : " + completeMessage);
       }
     }
 

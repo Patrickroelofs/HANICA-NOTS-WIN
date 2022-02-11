@@ -74,30 +74,23 @@ namespace bp01_chatapplicatie
       form.ShowDialog();
     }
 
-    private void btnStopServer_Click(object sender, EventArgs e)
-    {
-      // Disable Start Server button
-      btnStartServer.Visible = true;
-
-      // Disable Connect to Server groupbox
-      connectServerGroupBox.Visible = true;
-    }
-
     private async void MessageReceiver()
     {
       byte[] buffer = new byte[Parsers.ParseToInt(clientBufferSize.Text)];
+      StringBuilder completeMessage = new StringBuilder();
       NetworkStream networkStream = _client.GetStream();
+      int numberOfBytesRead;
 
-      while (networkStream.CanRead)
+      if (networkStream.CanRead)
       {
-        int bytes = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
-        string message = Encoding.ASCII.GetString(buffer, 0, bytes);
+        do
+        {
+          numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
+          completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
 
-        AddMessage(message);
+          AddMessage("" + completeMessage);
+        } while (networkStream.DataAvailable);
       }
-      
-      networkStream.Close();
-      _client.Close();
     }
 
     private void AddMessage(string message)
