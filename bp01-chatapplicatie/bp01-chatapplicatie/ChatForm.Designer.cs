@@ -31,20 +31,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChatForm));
             this.btnStartServer = new System.Windows.Forms.Button();
-            this.txtMessageToBeSend = new System.Windows.Forms.TextBox();
-            this.btnSend = new System.Windows.Forms.Button();
+            this.clientMessage = new System.Windows.Forms.TextBox();
+            this.clientSendMessage = new System.Windows.Forms.Button();
             this.connectServerGroupBox = new System.Windows.Forms.GroupBox();
+            this.clientBufferSize = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.PortLabel = new System.Windows.Forms.Label();
-            this.txtChatServerPort = new System.Windows.Forms.TextBox();
-            this.inputUsername = new System.Windows.Forms.TextBox();
+            this.clientPort = new System.Windows.Forms.TextBox();
+            this.clientUsername = new System.Windows.Forms.TextBox();
             this.username = new System.Windows.Forms.Label();
             this.ipLabel = new System.Windows.Forms.Label();
             this.btnConnect = new System.Windows.Forms.Button();
-            this.txtChatServerIP = new System.Windows.Forms.TextBox();
-            this.messageBox = new System.Windows.Forms.ListBox();
+            this.clientIP = new System.Windows.Forms.TextBox();
+            this.clientMessageList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnStopServer = new System.Windows.Forms.Button();
+            this.timer1 = new System.Timers.Timer();
             this.connectServerGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.timer1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnStartServer
@@ -54,47 +57,59 @@
             this.btnStartServer.UseVisualStyleBackColor = true;
             this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
             // 
-            // txtMessageToBeSend
+            // clientMessage
             // 
-            resources.ApplyResources(this.txtMessageToBeSend, "txtMessageToBeSend");
-            this.txtMessageToBeSend.Name = "txtMessageToBeSend";
+            resources.ApplyResources(this.clientMessage, "clientMessage");
+            this.clientMessage.Name = "clientMessage";
             // 
-            // btnSend
+            // clientSendMessage
             // 
-            resources.ApplyResources(this.btnSend, "btnSend");
-            this.btnSend.Name = "btnSend";
-            this.btnSend.UseVisualStyleBackColor = true;
-            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            resources.ApplyResources(this.clientSendMessage, "clientSendMessage");
+            this.clientSendMessage.Name = "clientSendMessage";
+            this.clientSendMessage.UseVisualStyleBackColor = true;
+            this.clientSendMessage.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // connectServerGroupBox
             // 
             resources.ApplyResources(this.connectServerGroupBox, "connectServerGroupBox");
             this.connectServerGroupBox.BackColor = System.Drawing.Color.Transparent;
+            this.connectServerGroupBox.Controls.Add(this.clientBufferSize);
+            this.connectServerGroupBox.Controls.Add(this.label1);
             this.connectServerGroupBox.Controls.Add(this.PortLabel);
-            this.connectServerGroupBox.Controls.Add(this.txtChatServerPort);
-            this.connectServerGroupBox.Controls.Add(this.inputUsername);
+            this.connectServerGroupBox.Controls.Add(this.clientPort);
+            this.connectServerGroupBox.Controls.Add(this.clientUsername);
             this.connectServerGroupBox.Controls.Add(this.username);
             this.connectServerGroupBox.Controls.Add(this.ipLabel);
             this.connectServerGroupBox.Controls.Add(this.btnConnect);
-            this.connectServerGroupBox.Controls.Add(this.txtChatServerIP);
+            this.connectServerGroupBox.Controls.Add(this.clientIP);
             this.connectServerGroupBox.Name = "connectServerGroupBox";
             this.connectServerGroupBox.TabStop = false;
+            // 
+            // clientBufferSize
+            // 
+            resources.ApplyResources(this.clientBufferSize, "clientBufferSize");
+            this.clientBufferSize.Name = "clientBufferSize";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // PortLabel
             // 
             resources.ApplyResources(this.PortLabel, "PortLabel");
             this.PortLabel.Name = "PortLabel";
             // 
-            // txtChatServerPort
+            // clientPort
             // 
-            resources.ApplyResources(this.txtChatServerPort, "txtChatServerPort");
-            this.txtChatServerPort.Name = "txtChatServerPort";
+            resources.ApplyResources(this.clientPort, "clientPort");
+            this.clientPort.Name = "clientPort";
             // 
-            // inputUsername
+            // clientUsername
             // 
-            resources.ApplyResources(this.inputUsername, "inputUsername");
-            this.inputUsername.Name = "inputUsername";
-            this.inputUsername.TextChanged += new System.EventHandler(this.inputUsername_TextChanged);
+            resources.ApplyResources(this.clientUsername, "clientUsername");
+            this.clientUsername.Name = "clientUsername";
+            this.clientUsername.TextChanged += new System.EventHandler(this.inputUsername_TextChanged);
             // 
             // username
             // 
@@ -113,17 +128,17 @@
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // txtChatServerIP
+            // clientIP
             // 
-            resources.ApplyResources(this.txtChatServerIP, "txtChatServerIP");
-            this.txtChatServerIP.Name = "txtChatServerIP";
+            resources.ApplyResources(this.clientIP, "clientIP");
+            this.clientIP.Name = "clientIP";
             // 
-            // messageBox
+            // clientMessageList
             // 
-            resources.ApplyResources(this.messageBox, "messageBox");
-            this.messageBox.BackColor = System.Drawing.SystemColors.Window;
-            this.messageBox.FormattingEnabled = true;
-            this.messageBox.Name = "messageBox";
+            resources.ApplyResources(this.clientMessageList, "clientMessageList");
+            this.clientMessageList.BackColor = System.Drawing.SystemColors.Window;
+            this.clientMessageList.FormattingEnabled = true;
+            this.clientMessageList.Name = "clientMessageList";
             // 
             // label2
             // 
@@ -132,52 +147,55 @@
             this.label2.ForeColor = System.Drawing.Color.Yellow;
             this.label2.Name = "label2";
             // 
-            // btnStopServer
+            // timer1
             // 
-            resources.ApplyResources(this.btnStopServer, "btnStopServer");
-            this.btnStopServer.Name = "btnStopServer";
-            this.btnStopServer.UseVisualStyleBackColor = true;
-            this.btnStopServer.Click += new System.EventHandler(this.btnStopServer_Click);
+            this.timer1.Enabled = true;
+            this.timer1.SynchronizingObject = this;
             // 
             // ChatForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
-            this.Controls.Add(this.btnStopServer);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.messageBox);
+            this.Controls.Add(this.clientMessageList);
             this.Controls.Add(this.connectServerGroupBox);
-            this.Controls.Add(this.btnSend);
-            this.Controls.Add(this.txtMessageToBeSend);
+            this.Controls.Add(this.clientSendMessage);
+            this.Controls.Add(this.clientMessage);
             this.Controls.Add(this.btnStartServer);
             this.Name = "ChatForm";
             this.connectServerGroupBox.ResumeLayout(false);
             this.connectServerGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.timer1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.TextBox txtChatServerPort;
+        private System.Windows.Forms.TextBox clientBufferSize;
+
+        private System.Windows.Forms.Label label1;
+
+        private System.Timers.Timer timer1;
+
+        private System.Windows.Forms.TextBox clientPort;
         private System.Windows.Forms.Label PortLabel;
 
         private System.Windows.Forms.Label ipLabel;
-        private System.Windows.Forms.TextBox inputUsername;
+        private System.Windows.Forms.TextBox clientUsername;
 
         private System.Windows.Forms.Label username;
 
         private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.GroupBox connectServerGroupBox;
-        private System.Windows.Forms.TextBox txtChatServerIP;
+        private System.Windows.Forms.TextBox clientIP;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.ListBox messageBox;
+        private System.Windows.Forms.ListBox clientMessageList;
 
-        private System.Windows.Forms.TextBox txtMessageToBeSend;
-        private System.Windows.Forms.Button btnSend;
+        private System.Windows.Forms.TextBox clientMessage;
+        private System.Windows.Forms.Button clientSendMessage;
 
         private System.Windows.Forms.Button btnStartServer;
 
     #endregion
-    private System.Windows.Forms.Button btnStopServer;
-  }
+    }
 }
