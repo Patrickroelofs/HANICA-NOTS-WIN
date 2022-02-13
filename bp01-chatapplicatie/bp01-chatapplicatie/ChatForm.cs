@@ -28,6 +28,8 @@ namespace bp01_chatapplicatie
     {
       try
       {
+        AddMessage("Attempting to connect to " + clientIP.Text + ":" + clientPort.Text);
+
         _client = new TcpClient();
         await _client.ConnectAsync(clientIP.Text, Parsers.ParsePort(clientPort.Text));
       
@@ -37,6 +39,8 @@ namespace bp01_chatapplicatie
         btnStartServer.Visible = false;
         clientMessage.Enabled = true;
         connectServerGroupBox.Visible = false;
+
+        AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
 
         await Task.Run(MessageReceiver);
       }
@@ -76,20 +80,31 @@ namespace bp01_chatapplicatie
 
     private async void MessageReceiver()
     {
-      byte[] buffer = new byte[Parsers.ParseToInt(clientBufferSize.Text)];
-      StringBuilder completeMessage = new StringBuilder();
-      NetworkStream networkStream = _client.GetStream();
-      int numberOfBytesRead;
-
-      if (networkStream.CanRead)
+      try
       {
-        do
-        {
-          numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
-          completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
+        byte[] buffer = new byte[Parsers.ParseToInt(clientBufferSize.Text)];
+        NetworkStream networkStream = _client.GetStream();
+        int numberOfBytesRead;
 
-          AddMessage("" + completeMessage);
-        } while (networkStream.DataAvailable);
+        while (true)
+        {
+          StringBuilder completeMessage = new StringBuilder();
+        
+          if (networkStream.CanRead)
+          {
+            do
+            {
+              numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
+              completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
+
+              AddMessage("" + completeMessage);
+            } while (networkStream.DataAvailable);
+          }
+        }
+      }
+      catch (ObjectDisposedException)
+      {
+        AddMessage("Server was shut down.");
       }
     }
 

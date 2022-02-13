@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -23,7 +24,7 @@ namespace bp01_chatapplicatie
     public ServerForm()
     {
       InitializeComponent();
-      
+
       // disable stop server button on startup
       stopServerButton.Visible = false;
       SendMessageBox.Visible = false;
@@ -49,47 +50,68 @@ namespace bp01_chatapplicatie
     {
 
     }
+
     private async void startServerClick_Click(object sender, EventArgs e)
     {
-      _tcpListener = new TcpListener(IPAddress.Any, 3000);
-      _tcpListener.Start();
-
-      startServerClick.Enabled = false;
-      serverBufferSize.Enabled = false;
-      serverUsername.Enabled = false;
-      serverPort.Enabled = false;
-      serverIP.Enabled = false;
-
-      startServerClick.Visible = false;
-      stopServerButton.Visible = true;
-
-
-      while (true)
+      try
       {
-        _client = await _tcpListener.AcceptTcpClientAsync();
+        _tcpListener = new TcpListener(IPAddress.Parse(serverIP.Text), Parsers.ParsePort(serverPort.Text));
+        _tcpListener.Start();
 
-        clientsConnected.Add(_client);
-        await Task.Run(() => MessageReceiver(_client));
+        startServerClick.Enabled = false;
+        serverBufferSize.Enabled = false;
+        serverUsername.Enabled = false;
+        serverPort.Enabled = false;
+        serverIP.Enabled = false;
+
+        startServerClick.Visible = false;
+        stopServerButton.Visible = true;
+
+        while (true)
+        {
+          _client = await _tcpListener.AcceptTcpClientAsync();
+          clientsConnected.Add(_client);
+          await Task.Run(() => MessageReceiver(_client));
+        }
+      }
+      catch (SocketException)
+      {
+        AddMessage("There's already a server on those settings.");
+      }
+      catch (TargetInvocationException)
+      {
+        AddMessage("Server was shut down.");
       }
     }
 
     private async void MessageReceiver(TcpClient client)
     {
       byte[] buffer = new byte[Parsers.ParsePort(serverBufferSize.Text)];
-      StringBuilder completeMessage = new StringBuilder();
       NetworkStream networkStream = client.GetStream();
       int numberOfBytesRead;
-    
-      if (networkStream.CanRead)
+
+      while (true)
       {
-        do
+        StringBuilder completeMessage = new StringBuilder();
+
+        if (networkStream.CanRead)
         {
-          numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
-          completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
-        } while (networkStream.DataAvailable);
-      
-        AddMessage(numberOfBytesRead + " : " + completeMessage);
-        await SendMessageToClients(numberOfBytesRead + " : " + completeMessage);
+          do
+          {
+            try
+            {
+              numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
+              completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
+            }
+            catch (ObjectDisposedException)
+            {
+              AddMessage("Client disconnected.");
+            }
+          } while (networkStream.DataAvailable);
+
+          AddMessage(completeMessage.ToString());
+          await SendMessageToClients(completeMessage.ToString());
+        }
       }
     }
 
@@ -100,7 +122,7 @@ namespace bp01_chatapplicatie
         foreach (TcpClient client in clientsConnected)
         {
           NetworkStream networkStream = client.GetStream();
-          
+
           if (networkStream.CanRead)
           {
             byte[] serverMessageByteArray = Encoding.ASCII.GetBytes(message);
@@ -109,7 +131,7 @@ namespace bp01_chatapplicatie
         }
       }
     }
-    
+
     private void AddMessage(string message)
     {
       chatListBox.Invoke(new Action(() => chatListBox.Items.Add(message)));
@@ -119,14 +141,17 @@ namespace bp01_chatapplicatie
     {
       await SendMessageToClients("Server is shutting down");
 
-
-      foreach (TcpClient client in clientsConnected)
-      {
-        client.Close();
-      }
-      
       clientsConnected.Clear();
       _tcpListener.Stop();
+
+      startServerClick.Enabled = true;
+      serverBufferSize.Enabled = true;
+      serverUsername.Enabled = true;
+      serverPort.Enabled = true;
+      serverIP.Enabled = true;
+
+      startServerClick.Visible = true;
+      stopServerButton.Visible = false;
     }
   }
 }
