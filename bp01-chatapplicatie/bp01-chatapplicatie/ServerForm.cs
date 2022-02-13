@@ -80,6 +80,7 @@ namespace bp01_chatapplicatie
       }
       catch (ObjectDisposedException)
       {
+        // TODO: STOP SERVER and DISCONNECT Clients
         AddMessage("The server has been stopped.");
       }
     }
