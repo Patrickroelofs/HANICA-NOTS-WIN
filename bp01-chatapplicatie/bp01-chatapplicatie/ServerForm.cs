@@ -78,9 +78,9 @@ namespace bp01_chatapplicatie
       {
         AddMessage("There's already a server on those settings.");
       }
-      catch (TargetInvocationException)
+      catch (ObjectDisposedException)
       {
-        AddMessage("Server was shut down.");
+        AddMessage("The server has been stopped.");
       }
     }
 
