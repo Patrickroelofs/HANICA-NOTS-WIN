@@ -28,21 +28,26 @@ namespace bp01_chatapplicatie
     {
       try
       {
-        AddMessage("Attempting to connect to " + clientIP.Text + ":" + clientPort.Text);
+        if (Parsers.ParseInputs(clientIP.Text, clientPort.Text, clientUsername.Text, clientBufferSize.Text))
+        {
+          AddMessage("Attempting to connect to " + clientIP.Text + ":" + clientPort.Text);
 
-        _client = new TcpClient();
-        await _client.ConnectAsync(clientIP.Text, Parsers.ParsePort(clientPort.Text));
+          _client = new TcpClient();
+          await _client.ConnectAsync(clientIP.Text, Parsers.ParseToInt(clientPort.Text));
       
-        _networkStream = _client.GetStream();
+          _networkStream = _client.GetStream();
 
-        clientSendMessage.Enabled = true;
-        btnStartServer.Visible = false;
-        clientMessage.Enabled = true;
-        connectServerGroupBox.Visible = false;
+          clientSendMessage.Enabled = true;
+          btnStartServer.Visible = false;
+          clientMessage.Enabled = true;
+          connectServerGroupBox.Visible = false;
 
-        AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
+          AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
 
-        await Task.Run(MessageReceiver);
+          await Task.Run(MessageReceiver);
+        }
+        
+        AddMessage("One or more inputs are incorrect, please try again.");
       }
       catch (SocketException)
       {

@@ -55,24 +55,29 @@ namespace bp01_chatapplicatie
     {
       try
       {
-        _tcpListener = new TcpListener(IPAddress.Parse(serverIP.Text), Parsers.ParsePort(serverPort.Text));
-        _tcpListener.Start();
-
-        startServerClick.Enabled = false;
-        serverBufferSize.Enabled = false;
-        serverUsername.Enabled = false;
-        serverPort.Enabled = false;
-        serverIP.Enabled = false;
-
-        startServerClick.Visible = false;
-        stopServerButton.Visible = true;
-
-        while (true)
+        if (Parsers.ParseInputs(serverIP.Text, serverPort.Text, serverUsername.Text, serverBufferSize.Text))
         {
-          _client = await _tcpListener.AcceptTcpClientAsync();
-          clientsConnected.Add(_client);
-          await Task.Run(() => MessageReceiver(_client));
+          _tcpListener = new TcpListener(IPAddress.Parse(serverIP.Text), Parsers.ParseToInt(serverPort.Text));
+          _tcpListener.Start();
+
+          startServerClick.Enabled = false;
+          serverBufferSize.Enabled = false;
+          serverUsername.Enabled = false;
+          serverPort.Enabled = false;
+          serverIP.Enabled = false;
+
+          startServerClick.Visible = false;
+          stopServerButton.Visible = true;
+
+          while (true)
+          {
+            _client = await _tcpListener.AcceptTcpClientAsync();
+            clientsConnected.Add(_client);
+            await Task.Run(() => MessageReceiver(_client));
+          }
         }
+        
+        AddMessage("One or more inputs are incorrect, please try again.");
       }
       catch (SocketException)
       {
@@ -87,7 +92,7 @@ namespace bp01_chatapplicatie
 
     private async void MessageReceiver(TcpClient client)
     {
-      byte[] buffer = new byte[Parsers.ParsePort(serverBufferSize.Text)];
+      byte[] buffer = new byte[Parsers.ParseToInt(serverBufferSize.Text)];
       NetworkStream networkStream = client.GetStream();
       int numberOfBytesRead;
 
