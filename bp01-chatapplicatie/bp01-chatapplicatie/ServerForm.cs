@@ -76,8 +76,10 @@ namespace bp01_chatapplicatie
             await Task.Run(() => MessageReceiver(_client));
           }
         }
-        
-        AddMessage("One or more inputs are incorrect, please try again.");
+        else
+        {
+          AddMessage("One or more inputs are incorrect, please try again.");
+        }
       }
       catch (SocketException)
       {

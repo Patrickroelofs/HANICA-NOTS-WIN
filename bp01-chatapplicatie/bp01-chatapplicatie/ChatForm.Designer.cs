@@ -46,6 +46,7 @@
             this.clientMessageList = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.timer1 = new System.Timers.Timer();
+            this.clientDisconnect = new System.Windows.Forms.Button();
             this.connectServerGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.timer1)).BeginInit();
             this.SuspendLayout();
@@ -152,10 +153,18 @@
             this.timer1.Enabled = true;
             this.timer1.SynchronizingObject = this;
             // 
+            // clientDisconnect
+            // 
+            resources.ApplyResources(this.clientDisconnect, "clientDisconnect");
+            this.clientDisconnect.Name = "clientDisconnect";
+            this.clientDisconnect.UseVisualStyleBackColor = true;
+            this.clientDisconnect.Click += new System.EventHandler(this.clientDisconnect_Click);
+            // 
             // ChatForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             resources.ApplyResources(this, "$this");
+            this.Controls.Add(this.clientDisconnect);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.clientMessageList);
             this.Controls.Add(this.connectServerGroupBox);
@@ -169,6 +178,8 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Button clientDisconnect;
 
         private System.Windows.Forms.TextBox clientBufferSize;
 

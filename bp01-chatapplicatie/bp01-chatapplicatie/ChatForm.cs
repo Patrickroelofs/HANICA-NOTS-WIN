@@ -22,6 +22,7 @@ namespace bp01_chatapplicatie
       // Disable chat when not connected to server
       clientSendMessage.Enabled = false;
       clientMessage.Enabled = false;
+      clientDisconnect.Visible = false;
     }
 
     private async void btnConnect_Click(object sender, EventArgs e)
@@ -41,13 +42,16 @@ namespace bp01_chatapplicatie
           btnStartServer.Visible = false;
           clientMessage.Enabled = true;
           connectServerGroupBox.Visible = false;
+          clientDisconnect.Visible = true;
 
           AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
 
           await Task.Run(MessageReceiver);
         }
-        
-        AddMessage("One or more inputs are incorrect, please try again.");
+        else
+        {
+          AddMessage("One or more inputs are incorrect, please try again.");
+        }
       }
       catch (SocketException)
       {
@@ -116,6 +120,11 @@ namespace bp01_chatapplicatie
     private void AddMessage(string message)
     {
       clientMessageList.Invoke(new Action(() => clientMessageList.Items.Add(message)));
+    }
+
+    private void clientDisconnect_Click(object sender, EventArgs e)
+    {
+      //TODO: Add client disconnect
     }
   }
 }
