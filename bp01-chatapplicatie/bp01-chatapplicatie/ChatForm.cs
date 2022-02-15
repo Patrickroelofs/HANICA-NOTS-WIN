@@ -108,28 +108,27 @@ namespace bp01_chatapplicatie
           {
             do
             {
-              numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
+              numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
               completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
-
-
-              if (completeMessage.ToString().StartsWith(CLOSE_SERVER) && completeMessage.Length > 0)
-              {
-                completeMessage.Remove(0, CLOSE_SERVER.Length);
-              
-                AddMessage(completeMessage.ToString());
-
-                _networkStream.Close();
-                _client.Close();
-
-              }
-              else
-              {
-                if (completeMessage.Length > 0)
-                {
-                  AddMessage("" + completeMessage);
-                }
-              }
             } while (networkStream.DataAvailable);
+          }
+          
+          if (completeMessage.ToString().StartsWith(CLOSE_SERVER) && completeMessage.Length > 0)
+          {
+            completeMessage.Remove(0, CLOSE_SERVER.Length);
+              
+            AddMessage(completeMessage.ToString());
+
+            _networkStream.Close();
+            _client.Close();
+
+          }
+          else
+          {
+            if (completeMessage.Length > 0)
+            {
+              AddMessage("" + completeMessage);
+            }
           }
         }
       }
