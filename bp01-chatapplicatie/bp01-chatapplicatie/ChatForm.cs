@@ -12,6 +12,8 @@ namespace bp01_chatapplicatie
 {
   public partial class ChatForm : Form
   {
+    private string CLOSE_SERVER = "~close_server~";
+    
     private TcpClient _client;
     private NetworkStream _networkStream;
 
@@ -45,7 +47,7 @@ namespace bp01_chatapplicatie
           clientDisconnect.Visible = true;
 
           AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
-          SendMessageToServer("", clientUsername.Text, "~connect~");
+          await SendMessageToServer("", clientUsername.Text, "~connect~");
 
           await Task.Run(MessageReceiver);
         }
@@ -62,7 +64,7 @@ namespace bp01_chatapplicatie
 
     private async void btnSend_Click(object sender, EventArgs e)
     {
-      await SendMessageToServer(clientMessage.Text, clientUsername.Text, "~message~");
+      await SendMessageToServer(" : " + clientMessage.Text, clientUsername.Text, "~message~");
     }
 
     private async Task SendMessageToServer(string message, string chatUsername, string command)
@@ -95,31 +97,37 @@ namespace bp01_chatapplicatie
 
     private async void MessageReceiver()
     {
-      try
-      {
-        byte[] buffer = new byte[Parsers.ParseToInt(clientBufferSize.Text)];
-        NetworkStream networkStream = _client.GetStream();
-        int numberOfBytesRead;
+      byte[] buffer = new byte[Parsers.ParseToInt(clientBufferSize.Text)];
+      NetworkStream networkStream = _client.GetStream();
+      int numberOfBytesRead;
 
-        while (true)
+      while (true)
+      {
+        StringBuilder completeMessage = new StringBuilder();
+      
+        if (networkStream.CanRead)
         {
-          StringBuilder completeMessage = new StringBuilder();
-        
-          if (networkStream.CanRead)
+          do
           {
-            do
-            {
-              numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
-              completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
+            numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
+            completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
 
+            if (completeMessage.ToString().StartsWith(CLOSE_SERVER))
+            {
+              completeMessage.Remove(0, CLOSE_SERVER.Length);
+              
+              AddMessage(completeMessage.ToString());
+
+              _networkStream.Close();
+              _client.Close();
+
+            }
+            else
+            {
               AddMessage("" + completeMessage);
-            } while (networkStream.DataAvailable);
-          }
+            }
+          } while (networkStream.DataAvailable);
         }
-      }
-      catch (ObjectDisposedException)
-      {
-        AddMessage("Server was shut down.");
       }
     }
 
@@ -128,9 +136,15 @@ namespace bp01_chatapplicatie
       clientMessageList.Invoke(new Action(() => clientMessageList.Items.Add(message)));
     }
 
-    private void clientDisconnect_Click(object sender, EventArgs e)
+    private async void clientDisconnect_Click(object sender, EventArgs e)
     {
-      //TODO: Add client disconnect
+      clientSendMessage.Enabled = false;
+      clientMessage.Enabled = false;
+      btnStartServer.Visible = true;
+      connectServerGroupBox.Visible = true;
+      clientDisconnect.Visible = false;
+      
+      await SendMessageToServer("", clientUsername.Text, "~disconnect~");
     }
   }
 }

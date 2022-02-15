@@ -6,6 +6,9 @@ namespace bp01_chatapplicatie
 {
     public class Parsers
     {
+        /**
+         * Parses string to int
+         */
         public static int ParseToInt(string input)
         {
             int output;
@@ -13,6 +16,9 @@ namespace bp01_chatapplicatie
             return output;
         }
 
+        /**
+         * Parses input fields on server and client, ensures their safe and return true if safe.
+         */
         public static bool ParseInputs(string ip, string port, string name, string bufferSize)
         {
             bool tryParseIp = IPAddress.TryParse(ip, out IPAddress ipAddress) || ip == "localhost";

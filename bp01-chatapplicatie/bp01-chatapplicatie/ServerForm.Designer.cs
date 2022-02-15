@@ -138,7 +138,6 @@
       this.serverBufferSize.Size = new System.Drawing.Size(212, 20);
       this.serverBufferSize.TabIndex = 3;
       this.serverBufferSize.Text = "1024";
-      this.serverBufferSize.TextChanged += new System.EventHandler(this.serverBufferSize_TextChanged);
       // 
       // serverPort
       // 
@@ -148,7 +147,6 @@
       this.serverPort.Size = new System.Drawing.Size(212, 20);
       this.serverPort.TabIndex = 2;
       this.serverPort.Text = "3000";
-      this.serverPort.TextChanged += new System.EventHandler(this.serverPort_TextChanged);
       // 
       // serverIP
       // 
@@ -158,7 +156,6 @@
       this.serverIP.Size = new System.Drawing.Size(212, 20);
       this.serverIP.TabIndex = 1;
       this.serverIP.Text = "127.0.0.1";
-      this.serverIP.TextChanged += new System.EventHandler(this.serverIP_TextChanged);
       // 
       // serverUsername
       // 
@@ -168,7 +165,6 @@
       this.serverUsername.Size = new System.Drawing.Size(212, 20);
       this.serverUsername.TabIndex = 0;
       this.serverUsername.Text = "Patrick";
-      this.serverUsername.TextChanged += new System.EventHandler(this.serverName_TextChanged);
       // 
       // clientsConnectedBox
       // 

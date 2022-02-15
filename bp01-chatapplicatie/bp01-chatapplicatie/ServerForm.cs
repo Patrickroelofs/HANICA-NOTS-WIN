@@ -34,35 +34,16 @@ namespace bp01_chatapplicatie
       SendMessageBox.Visible = false;
     }
 
-    private void serverName_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void serverIP_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void serverPort_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    private void serverBufferSize_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
     private async void startServerClick_Click(object sender, EventArgs e)
     {
       try
       {
         if (Parsers.ParseInputs(serverIP.Text, serverPort.Text, serverUsername.Text, serverBufferSize.Text))
         {
+
           _tcpListener = new TcpListener(IPAddress.Parse(serverIP.Text), Parsers.ParseToInt(serverPort.Text));
           _tcpListener.Start();
-
+          
           startServerClick.Enabled = false;
           serverBufferSize.Enabled = false;
           serverUsername.Enabled = false;
@@ -72,11 +53,14 @@ namespace bp01_chatapplicatie
           startServerClick.Visible = false;
           stopServerButton.Visible = true;
 
-          while (true)
+          if (_tcpListener != null)
           {
-            _client = await _tcpListener.AcceptTcpClientAsync();
-            clientsConnected.Add(_client);
-            await Task.Run(() => MessageReceiver(_client));
+            while (true)
+            {
+              _client = await _tcpListener.AcceptTcpClientAsync();
+              clientsConnected.Add(_client);
+              await Task.Run(() => MessageReceiver(_client));
+            }
           }
         }
         else
@@ -87,6 +71,10 @@ namespace bp01_chatapplicatie
       catch (SocketException)
       {
         AddMessage("There's already a server on those settings.");
+      }
+      catch (ObjectDisposedException)
+      {
+        AddMessage("Server shutdown success.");
       }
     }
 
@@ -114,11 +102,15 @@ namespace bp01_chatapplicatie
             
             AddMessage(completeMessage.ToString());
             await SendMessageToClients(completeMessage.ToString());
-            
+
+
           } else if (completeMessage.ToString().StartsWith(DISCONNECT))
           {
             completeMessage.Remove(0, DISCONNECT.Length);
-
+            AddMessage("Client " + completeMessage + " has disconnected.");
+            await SendMessageToClients("Client " + completeMessage + " has disconnected.");
+            RemoveClientFromList(client);
+            
           } else if (completeMessage.ToString().StartsWith(CLOSE_SERVER))
           {
             completeMessage.Remove(0, CLOSE_SERVER.Length);
@@ -161,10 +153,6 @@ namespace bp01_chatapplicatie
 
     private async void stopServerButton_Click(object sender, EventArgs e)
     {
-      await SendMessageToClients("Server is shutting down");
-      
-      //TODO: Disconnect clients and shutdown server gracefully
-
       startServerClick.Enabled = true;
       serverBufferSize.Enabled = true;
       serverUsername.Enabled = true;
@@ -173,6 +161,23 @@ namespace bp01_chatapplicatie
 
       startServerClick.Visible = true;
       stopServerButton.Visible = false;
+
+      await SendMessageToClients(CLOSE_SERVER + "Server is shutting down");
+
+      _tcpListener.Stop();
+
+      _client = null;
+      _tcpListener = null;
+    }
+
+    private void RemoveClientFromList(TcpClient client)
+    {
+      if (clientsConnected.Count > 0 && clientsConnected.Contains(client))
+      {
+        clientsConnectedListBox.Invoke(new Action(() => clientsConnectedListBox.Items.RemoveAt(clientsConnected.IndexOf(client))));
+        clientsConnected.Remove(client);
+        client.Close();
+      }
     }
   }
 }
