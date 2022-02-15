@@ -78,11 +78,6 @@ namespace bp01_chatapplicatie
       clientMessage.Clear();
       clientMessage.Focus();
     }
-    
-    private void inputUsername_TextChanged(object sender, EventArgs e)
-    {
-      
-    }
 
     private void btnStartServer_Click(object sender, EventArgs e)
     {
@@ -162,6 +157,14 @@ namespace bp01_chatapplicatie
       clientDisconnect.Invoke(new Action(() => clientDisconnect.Visible = false));
       
       await SendMessageToServer("", clientUsername.Text, "~disconnect~");
+    }
+
+    private void clientMessage_KeyDown_2(object sender, KeyEventArgs e)
+    {
+      if (e.KeyCode == Keys.Enter)
+      {
+        btnSend_Click(sender, e);
+      }
     }
   }
 }

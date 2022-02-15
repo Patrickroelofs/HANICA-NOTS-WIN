@@ -62,6 +62,7 @@
             // 
             resources.ApplyResources(this.clientMessage, "clientMessage");
             this.clientMessage.Name = "clientMessage";
+            this.clientMessage.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clientMessage_KeyDown_2);
             // 
             // clientSendMessage
             // 
@@ -110,7 +111,6 @@
             // 
             resources.ApplyResources(this.clientUsername, "clientUsername");
             this.clientUsername.Name = "clientUsername";
-            this.clientUsername.TextChanged += new System.EventHandler(this.inputUsername_TextChanged);
             // 
             // username
             // 
