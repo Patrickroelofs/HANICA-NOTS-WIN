@@ -41,20 +41,15 @@
       this.serverUsername = new System.Windows.Forms.TextBox();
       this.clientsConnectedBox = new System.Windows.Forms.GroupBox();
       this.clientsConnectedListBox = new System.Windows.Forms.ListBox();
-      this.SendMessageBox = new System.Windows.Forms.GroupBox();
-      this.serverButtonSend = new System.Windows.Forms.Button();
-      this.serverMessageInput = new System.Windows.Forms.TextBox();
       this.chatBox = new System.Windows.Forms.GroupBox();
       this.chatListBox = new System.Windows.Forms.ListBox();
       this.groupBox1.SuspendLayout();
       this.clientsConnectedBox.SuspendLayout();
-      this.SendMessageBox.SuspendLayout();
       this.chatBox.SuspendLayout();
       this.SuspendLayout();
       // 
       // groupBox1
       // 
-      this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.groupBox1.BackColor = System.Drawing.Color.Transparent;
       this.groupBox1.Controls.Add(this.stopServerButton);
       this.groupBox1.Controls.Add(this.startServerClick);
@@ -168,51 +163,27 @@
       // 
       // clientsConnectedBox
       // 
+      this.clientsConnectedBox.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
       this.clientsConnectedBox.Controls.Add(this.clientsConnectedListBox);
-      this.clientsConnectedBox.Location = new System.Drawing.Point(12, 232);
+      this.clientsConnectedBox.Location = new System.Drawing.Point(12, 174);
       this.clientsConnectedBox.Name = "clientsConnectedBox";
-      this.clientsConnectedBox.Size = new System.Drawing.Size(334, 190);
+      this.clientsConnectedBox.Size = new System.Drawing.Size(334, 248);
       this.clientsConnectedBox.TabIndex = 1;
       this.clientsConnectedBox.TabStop = false;
       this.clientsConnectedBox.Text = "Clients Connected";
       // 
       // clientsConnectedListBox
       // 
+      this.clientsConnectedListBox.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
       this.clientsConnectedListBox.FormattingEnabled = true;
-      this.clientsConnectedListBox.Location = new System.Drawing.Point(6, 22);
+      this.clientsConnectedListBox.Location = new System.Drawing.Point(6, 17);
       this.clientsConnectedListBox.Name = "clientsConnectedListBox";
-      this.clientsConnectedListBox.Size = new System.Drawing.Size(322, 160);
+      this.clientsConnectedListBox.Size = new System.Drawing.Size(322, 225);
       this.clientsConnectedListBox.TabIndex = 0;
-      // 
-      // SendMessageBox
-      // 
-      this.SendMessageBox.Controls.Add(this.serverButtonSend);
-      this.SendMessageBox.Controls.Add(this.serverMessageInput);
-      this.SendMessageBox.Location = new System.Drawing.Point(12, 174);
-      this.SendMessageBox.Name = "SendMessageBox";
-      this.SendMessageBox.Size = new System.Drawing.Size(334, 52);
-      this.SendMessageBox.TabIndex = 2;
-      this.SendMessageBox.TabStop = false;
-      this.SendMessageBox.Text = "Send Message";
-      // 
-      // serverButtonSend
-      // 
-      this.serverButtonSend.Location = new System.Drawing.Point(253, 17);
-      this.serverButtonSend.Name = "serverButtonSend";
-      this.serverButtonSend.Size = new System.Drawing.Size(75, 23);
-      this.serverButtonSend.TabIndex = 1;
-      this.serverButtonSend.Text = "Send";
-      this.serverButtonSend.UseVisualStyleBackColor = true;
-      // 
-      // serverMessageInput
-      // 
-      this.serverMessageInput.Location = new System.Drawing.Point(6, 19);
-      this.serverMessageInput.Name = "serverMessageInput";
-      this.serverMessageInput.Size = new System.Drawing.Size(243, 20);
-      this.serverMessageInput.TabIndex = 0;
       // 
       // chatBox
       // 
+      this.chatBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.chatBox.Controls.Add(this.chatListBox);
       this.chatBox.Location = new System.Drawing.Point(352, 12);
       this.chatBox.Name = "chatBox";
@@ -223,6 +194,7 @@
       // 
       // chatListBox
       // 
+      this.chatListBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.chatListBox.FormattingEnabled = true;
       this.chatListBox.Location = new System.Drawing.Point(6, 22);
       this.chatListBox.Name = "chatListBox";
@@ -236,7 +208,6 @@
       this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
       this.ClientSize = new System.Drawing.Size(674, 434);
       this.Controls.Add(this.chatBox);
-      this.Controls.Add(this.SendMessageBox);
       this.Controls.Add(this.clientsConnectedBox);
       this.Controls.Add(this.groupBox1);
       this.DoubleBuffered = true;
@@ -246,8 +217,6 @@
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       this.clientsConnectedBox.ResumeLayout(false);
-      this.SendMessageBox.ResumeLayout(false);
-      this.SendMessageBox.PerformLayout();
       this.chatBox.ResumeLayout(false);
       this.ResumeLayout(false);
     }
@@ -256,10 +225,6 @@
 
     private System.Windows.Forms.GroupBox chatBox;
     private System.Windows.Forms.ListBox chatListBox;
-
-    private System.Windows.Forms.GroupBox SendMessageBox;
-    private System.Windows.Forms.TextBox serverMessageInput;
-    private System.Windows.Forms.Button serverButtonSend;
 
     private System.Windows.Forms.GroupBox clientsConnectedBox;
     private System.Windows.Forms.ListBox clientsConnectedListBox;

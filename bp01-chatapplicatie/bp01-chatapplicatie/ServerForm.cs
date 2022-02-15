@@ -32,7 +32,8 @@ namespace bp01_chatapplicatie
 
       // disable stop server button on startup
       stopServerButton.Visible = false;
-      SendMessageBox.Visible = false;
+
+      MinimumSize = new Size(600, 400);
     }
 
     private async void startServerClick_Click(object sender, EventArgs e)

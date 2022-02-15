@@ -25,6 +25,8 @@ namespace bp01_chatapplicatie
       clientSendMessage.Enabled = false;
       clientMessage.Enabled = false;
       clientDisconnect.Visible = false;
+      
+      MinimumSize = new Size(600, 400);
     }
 
     private async void btnConnect_Click(object sender, EventArgs e)

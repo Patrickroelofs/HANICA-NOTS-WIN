@@ -7,7 +7,7 @@ namespace bp01_chatapplicatie
     public class Parsers
     {
         /**
-         * Parses string to int
+         * Parses string to int and returns int
          */
         public static int ParseToInt(string input)
         {
@@ -17,7 +17,8 @@ namespace bp01_chatapplicatie
         }
 
         /**
-         * Parses input fields on server and client, ensures their safe and return true if safe.
+         * Parses input fields on server and client, ensures their values are safe and returns true.
+         * It parses IP, Port, BufferSize and Name
          */
         public static bool ParseInputs(string ip, string port, string name, string bufferSize)
         {
