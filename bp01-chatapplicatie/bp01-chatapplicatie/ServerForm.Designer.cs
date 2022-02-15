@@ -214,6 +214,7 @@
       this.Name = "ServerForm";
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
       this.Text = "Bikini Bottom Server";
+      this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ServerForm_FormClosing);
       this.groupBox1.ResumeLayout(false);
       this.groupBox1.PerformLayout();
       this.clientsConnectedBox.ResumeLayout(false);

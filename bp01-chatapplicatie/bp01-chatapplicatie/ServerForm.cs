@@ -193,5 +193,24 @@ namespace bp01_chatapplicatie
         clientsConnectedListBox.Invoke(new Action(() => clientsConnectedListBox.Items.Clear()));
       }
     }
+
+    private void ServerForm_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      if (e.CloseReason == CloseReason.UserClosing)
+      {
+        DialogResult result = MessageBox.Show("Are you sure you want to close the server this will also shut it down?", "Close Server", MessageBoxButtons.YesNo);
+
+        if (result == DialogResult.Yes)
+        {
+          stopServerButton.PerformClick();
+          
+          Environment.Exit(0);
+        }
+        else
+        {
+          e.Cancel = true;
+        }
+      }
+    }
   }
 }
