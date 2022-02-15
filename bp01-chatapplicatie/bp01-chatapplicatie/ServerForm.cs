@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -75,6 +76,7 @@ namespace bp01_chatapplicatie
       catch (ObjectDisposedException)
       {
         AddMessage("Server shutdown success.");
+        EmptyClientList();
       }
     }
 
@@ -91,9 +93,10 @@ namespace bp01_chatapplicatie
         if (networkStream.CanRead)
         {
           do
-          {
+          { 
             numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
             completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
+
           } while (networkStream.DataAvailable);
 
           if (completeMessage.ToString().StartsWith(MESSAGE))
@@ -114,6 +117,7 @@ namespace bp01_chatapplicatie
           } else if (completeMessage.ToString().StartsWith(CLOSE_SERVER))
           {
             completeMessage.Remove(0, CLOSE_SERVER.Length);
+            EmptyClientList();
 
           } else if (completeMessage.ToString().StartsWith(CONNECT))
           {
@@ -177,6 +181,15 @@ namespace bp01_chatapplicatie
         clientsConnectedListBox.Invoke(new Action(() => clientsConnectedListBox.Items.RemoveAt(clientsConnected.IndexOf(client))));
         clientsConnected.Remove(client);
         client.Close();
+      }
+    }
+
+    private void EmptyClientList()
+    {
+      if (clientsConnected.Count > 0 && clientsConnectedListBox.Items.Count > 0)
+      {
+        clientsConnected.Clear();
+        clientsConnectedListBox.Invoke(new Action(() => clientsConnectedListBox.Items.Clear()));
       }
     }
   }

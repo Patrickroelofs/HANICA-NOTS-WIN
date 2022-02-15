@@ -101,33 +101,50 @@ namespace bp01_chatapplicatie
       NetworkStream networkStream = _client.GetStream();
       int numberOfBytesRead;
 
-      while (true)
+      try
       {
-        StringBuilder completeMessage = new StringBuilder();
-      
-        if (networkStream.CanRead)
+        while (true)
         {
-          do
+          StringBuilder completeMessage = new StringBuilder();
+      
+          if (networkStream.CanRead)
           {
-            numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
-            completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
-
-            if (completeMessage.ToString().StartsWith(CLOSE_SERVER))
+            do
             {
-              completeMessage.Remove(0, CLOSE_SERVER.Length);
+              numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, Parsers.ParseToInt(clientBufferSize.Text));
+              completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
+
+
+              if (completeMessage.ToString().StartsWith(CLOSE_SERVER) && completeMessage.Length > 0)
+              {
+                completeMessage.Remove(0, CLOSE_SERVER.Length);
               
-              AddMessage(completeMessage.ToString());
+                AddMessage(completeMessage.ToString());
 
-              _networkStream.Close();
-              _client.Close();
+                _networkStream.Close();
+                _client.Close();
 
-            }
-            else
-            {
-              AddMessage("" + completeMessage);
-            }
-          } while (networkStream.DataAvailable);
+              }
+              else
+              {
+                if (completeMessage.Length > 0)
+                {
+                  AddMessage("" + completeMessage);
+                }
+              }
+            } while (networkStream.DataAvailable);
+          }
         }
+      }
+      catch (ObjectDisposedException)
+      {
+        clientSendMessage.Invoke(new Action(() => clientSendMessage.Enabled = false));
+        clientMessage.Invoke(new Action(() => clientMessage.Enabled = false));
+        btnStartServer.Invoke(new Action(() => btnStartServer.Visible = true));
+        connectServerGroupBox.Invoke(new Action(() => connectServerGroupBox.Visible = true));
+        clientDisconnect.Invoke(new Action(() => clientDisconnect.Visible = false));
+        
+        AddMessage("Server was shutdown.");
       }
     }
 
@@ -138,11 +155,11 @@ namespace bp01_chatapplicatie
 
     private async void clientDisconnect_Click(object sender, EventArgs e)
     {
-      clientSendMessage.Enabled = false;
-      clientMessage.Enabled = false;
-      btnStartServer.Visible = true;
-      connectServerGroupBox.Visible = true;
-      clientDisconnect.Visible = false;
+      clientSendMessage.Invoke(new Action(() => clientSendMessage.Enabled = false));
+      clientMessage.Invoke(new Action(() => clientMessage.Enabled = false));
+      btnStartServer.Invoke(new Action(() => btnStartServer.Visible = true));
+      connectServerGroupBox.Invoke(new Action(() => connectServerGroupBox.Visible = true));
+      clientDisconnect.Invoke(new Action(() => clientDisconnect.Visible = false));
       
       await SendMessageToServer("", clientUsername.Text, "~disconnect~");
     }
