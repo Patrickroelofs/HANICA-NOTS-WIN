@@ -172,6 +172,7 @@
             this.Controls.Add(this.clientMessage);
             this.Controls.Add(this.btnStartServer);
             this.Name = "ChatForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ChatForm_FormClosing);
             this.connectServerGroupBox.ResumeLayout(false);
             this.connectServerGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize) (this.timer1)).EndInit();

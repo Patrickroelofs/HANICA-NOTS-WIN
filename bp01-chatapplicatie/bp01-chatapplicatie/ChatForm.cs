@@ -167,5 +167,24 @@ namespace bp01_chatapplicatie
         btnSend_Click(sender, e);
       }
     }
+
+    private void ChatForm_FormClosing(object sender, FormClosingEventArgs e)
+    {
+      if (e.CloseReason == CloseReason.UserClosing)
+      {
+        DialogResult result = MessageBox.Show("Are you sure you want to close the client this will also disconnect it?", "Close Client", MessageBoxButtons.YesNo);
+
+        if (result == DialogResult.Yes)
+        {
+          clientDisconnect.PerformClick();
+          
+          Environment.Exit(0);
+        }
+        else
+        {
+          e.Cancel = true;
+        }
+      }
+    }
   }
 }
