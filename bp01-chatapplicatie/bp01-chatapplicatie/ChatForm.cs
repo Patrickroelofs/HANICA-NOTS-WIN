@@ -45,6 +45,7 @@ namespace bp01_chatapplicatie
           clientDisconnect.Visible = true;
 
           AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
+          SendMessageToServer("", clientUsername.Text, "~connect~");
 
           await Task.Run(MessageReceiver);
         }
@@ -61,9 +62,14 @@ namespace bp01_chatapplicatie
 
     private async void btnSend_Click(object sender, EventArgs e)
     {
+      await SendMessageToServer(clientMessage.Text, clientUsername.Text, "~message~");
+    }
+
+    private async Task SendMessageToServer(string message, string chatUsername, string command)
+    {
       if (_networkStream.CanWrite)
       {
-        byte[] messageByteArray = Encoding.ASCII.GetBytes(clientUsername.Text + " : " + clientMessage.Text);
+        byte[] messageByteArray = Encoding.ASCII.GetBytes(command + chatUsername + message);
         await _networkStream.WriteAsync(messageByteArray, 0, messageByteArray.Length);
       }
       

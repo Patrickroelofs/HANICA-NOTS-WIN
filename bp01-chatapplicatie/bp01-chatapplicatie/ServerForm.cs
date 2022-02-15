@@ -16,6 +16,10 @@ namespace bp01_chatapplicatie
 {
   public partial class ServerForm : Form
   {
+    private string CLOSE_SERVER = "~close_server~";
+    private string DISCONNECT = "~disconnect~";
+    private string MESSAGE = "~message~";
+    private string CONNECT = "~connect~";
 
     private TcpClient _client;
     private TcpListener _tcpListener;
@@ -28,7 +32,6 @@ namespace bp01_chatapplicatie
       // disable stop server button on startup
       stopServerButton.Visible = false;
       SendMessageBox.Visible = false;
-      clientsConnectedBox.Visible = false;
     }
 
     private void serverName_TextChanged(object sender, EventArgs e)
@@ -85,11 +88,6 @@ namespace bp01_chatapplicatie
       {
         AddMessage("There's already a server on those settings.");
       }
-      catch (ObjectDisposedException)
-      {
-        // TODO: STOP SERVER and DISCONNECT Clients
-        AddMessage("The server has been stopped.");
-      }
     }
 
     private async void MessageReceiver(TcpClient client)
@@ -106,19 +104,35 @@ namespace bp01_chatapplicatie
         {
           do
           {
-            try
-            {
-              numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
-              completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
-            }
-            catch (ObjectDisposedException)
-            {
-              AddMessage("Client disconnected.");
-            }
+            numberOfBytesRead = await networkStream.ReadAsync(buffer, 0, buffer.Length);
+            completeMessage.Append(Encoding.ASCII.GetString(buffer, 0, numberOfBytesRead));
           } while (networkStream.DataAvailable);
 
-          AddMessage(completeMessage.ToString());
-          await SendMessageToClients(completeMessage.ToString());
+          if (completeMessage.ToString().StartsWith(MESSAGE))
+          {
+            completeMessage.Remove(0, MESSAGE.Length);
+            
+            AddMessage(completeMessage.ToString());
+            await SendMessageToClients(completeMessage.ToString());
+            
+          } else if (completeMessage.ToString().StartsWith(DISCONNECT))
+          {
+            completeMessage.Remove(0, DISCONNECT.Length);
+
+          } else if (completeMessage.ToString().StartsWith(CLOSE_SERVER))
+          {
+            completeMessage.Remove(0, CLOSE_SERVER.Length);
+
+          } else if (completeMessage.ToString().StartsWith(CONNECT))
+          {
+            completeMessage.Remove(0, CONNECT.Length);
+
+            clientsConnectedListBox.Invoke(new Action(() =>
+              clientsConnectedListBox.Items.Add(completeMessage.ToString())));
+
+            AddMessage(completeMessage + " has connected.");
+            await SendMessageToClients(completeMessage + " has connected.");
+          }
         }
       }
     }
@@ -148,9 +162,8 @@ namespace bp01_chatapplicatie
     private async void stopServerButton_Click(object sender, EventArgs e)
     {
       await SendMessageToClients("Server is shutting down");
-
-      clientsConnected.Clear();
-      _tcpListener.Stop();
+      
+      //TODO: Disconnect clients and shutdown server gracefully
 
       startServerClick.Enabled = true;
       serverBufferSize.Enabled = true;
