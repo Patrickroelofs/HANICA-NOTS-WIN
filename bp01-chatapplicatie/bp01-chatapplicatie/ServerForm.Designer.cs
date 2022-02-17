@@ -76,7 +76,7 @@
       this.btnStopServer.TabIndex = 9;
       this.btnStopServer.Text = "Stop Server";
       this.btnStopServer.UseVisualStyleBackColor = true;
-      this.btnStopServer.Click += new System.EventHandler(this.btnStopServer_click);
+      this.btnStopServer.Click += new System.EventHandler(this.btnStopServerAsync_click);
       // 
       // btnStartServer
       // 
@@ -88,7 +88,7 @@
       this.btnStartServer.TabIndex = 8;
       this.btnStartServer.Text = "Start Server";
       this.btnStartServer.UseVisualStyleBackColor = true;
-      this.btnStartServer.Click += new System.EventHandler(this.btnStartServer_Click);
+      this.btnStartServer.Click += new System.EventHandler(this.btnStartServerAsync_Click);
       // 
       // LabelBufferSize
       // 

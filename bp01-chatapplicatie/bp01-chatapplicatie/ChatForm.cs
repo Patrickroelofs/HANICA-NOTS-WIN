@@ -42,7 +42,7 @@ namespace bp01_chatapplicatie
     }
 
     // Connect to server as client
-    private async void btnConnect_Click(object sender, EventArgs e)
+    private async void btnConnectAsync_Click(object sender, EventArgs e)
     {
       try
       {
@@ -63,9 +63,9 @@ namespace bp01_chatapplicatie
           btnDisconnect.Visible = true;
 
           AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
-          await SendMessageToServer("", clientUsername.Text, CONNECT);
+          await SendMessageToServerAsync("", clientUsername.Text, CONNECT);
 
-          await Task.Run(MessageReceiver);
+          await Task.Run(MessageReceiverAsync);
         }
         else
         {
@@ -79,13 +79,13 @@ namespace bp01_chatapplicatie
     }
 
     // Send message to the server on click
-    private async void btnSend_Click(object sender, EventArgs e)
+    private async void btnSendAsync_Click(object sender, EventArgs e)
     {
-      await SendMessageToServer(" : " + clientMessage.Text, clientUsername.Text, MESSAGE);
+      await SendMessageToServerAsync(" : " + clientMessage.Text, clientUsername.Text, MESSAGE);
     }
 
     // send message to the server
-    private async Task SendMessageToServer(string message, string chatUsername, string command)
+    private async Task SendMessageToServerAsync(string message, string chatUsername, string command)
     {
       if (_networkStream.CanWrite)
       {
@@ -98,7 +98,7 @@ namespace bp01_chatapplicatie
     }
 
     // Receives messages and parses them through custom filters.
-    private async void MessageReceiver()
+    private async void MessageReceiverAsync()
     {
       byte[] buffer = new byte[Parsers.ParseToInt(clientBufferSize.Text)];
       NetworkStream networkStream = _client.GetStream();
@@ -160,7 +160,7 @@ namespace bp01_chatapplicatie
     }
 
     // Client disconnect button
-    private async void clientDisconnect_Click(object sender, EventArgs e)
+    private async void clientDisconnectAsync_Click(object sender, EventArgs e)
     { 
       btnSendMessage.Enabled = false;
       clientMessage.Enabled = false;
@@ -168,7 +168,7 @@ namespace bp01_chatapplicatie
       connectServerGroupBox.Visible = true;
       btnDisconnect.Visible = false;
       
-      await SendMessageToServer("", clientUsername.Text, DISCONNECT);
+      await SendMessageToServerAsync("", clientUsername.Text, DISCONNECT);
     }
 
     // Catch the enter key so the client can send messages with keyboard.

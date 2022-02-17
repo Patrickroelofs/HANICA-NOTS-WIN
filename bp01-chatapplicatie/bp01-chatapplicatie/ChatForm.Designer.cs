@@ -69,7 +69,7 @@
       resources.ApplyResources(this.btnSendMessage, "btnSendMessage");
       this.btnSendMessage.Name = "btnSendMessage";
       this.btnSendMessage.UseVisualStyleBackColor = true;
-      this.btnSendMessage.Click += new System.EventHandler(this.btnSend_Click);
+      this.btnSendMessage.Click += new System.EventHandler(this.btnSendAsync_Click);
       // 
       // connectServerGroupBox
       // 
@@ -127,7 +127,7 @@
       resources.ApplyResources(this.btnConnect, "btnConnect");
       this.btnConnect.Name = "btnConnect";
       this.btnConnect.UseVisualStyleBackColor = true;
-      this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
+      this.btnConnect.Click += new System.EventHandler(this.btnConnectAsync_Click);
       // 
       // clientIP
       // 
@@ -158,7 +158,7 @@
       resources.ApplyResources(this.btnDisconnect, "btnDisconnect");
       this.btnDisconnect.Name = "btnDisconnect";
       this.btnDisconnect.UseVisualStyleBackColor = true;
-      this.btnDisconnect.Click += new System.EventHandler(this.clientDisconnect_Click);
+      this.btnDisconnect.Click += new System.EventHandler(this.clientDisconnectAsync_Click);
       // 
       // ChatForm
       // 

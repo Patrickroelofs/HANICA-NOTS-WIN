@@ -32,7 +32,7 @@ namespace bp01_chatapplicatie
     }
 
     // Start server
-    private async void btnStartServer_Click(object sender, EventArgs e)
+    private async void btnStartServerAsync_Click(object sender, EventArgs e)
     {
       try
       {
@@ -59,7 +59,7 @@ namespace bp01_chatapplicatie
             {
               _client = await _tcpListener.AcceptTcpClientAsync();
               clientsConnected.Add(_client);
-              await Task.Run(() => MessageReceiver(_client));
+              await Task.Run(() => MessageReceiverAsync(_client));
             }
           }
         }
@@ -80,7 +80,7 @@ namespace bp01_chatapplicatie
     }
 
     // Receives messages and parses them through custom filters.
-    private async void MessageReceiver(TcpClient client)
+    private async void MessageReceiverAsync(TcpClient client)
     {
       byte[] buffer = new byte[Parsers.ParseToInt(serverBufferSize.Text)];
       NetworkStream networkStream = client.GetStream();
@@ -106,7 +106,7 @@ namespace bp01_chatapplicatie
             completeMessage.Remove(0, MESSAGE.Length);
             
             AddMessage(completeMessage.ToString());
-            await SendMessageToClients(completeMessage.ToString());
+            await SendMessageToClientsAsync(completeMessage.ToString());
 
 
           } 
@@ -115,7 +115,7 @@ namespace bp01_chatapplicatie
           {
             completeMessage.Remove(0, DISCONNECT.Length);
             AddMessage("Client " + completeMessage + " has disconnected.");
-            await SendMessageToClients("Client " + completeMessage + " has disconnected.");
+            await SendMessageToClientsAsync("Client " + completeMessage + " has disconnected.");
             RemoveClientFromList(client);
             
           } 
@@ -135,14 +135,14 @@ namespace bp01_chatapplicatie
               listClientsConnected.Items.Add(completeMessage.ToString())));
 
             AddMessage(completeMessage + " has connected.");
-            await SendMessageToClients(completeMessage + " has connected.");
+            await SendMessageToClientsAsync(completeMessage + " has connected.");
           }
         }
       }
     }
 
     // Stop server on click
-    private async void btnStopServer_click(object sender, EventArgs e)
+    private async void btnStopServerAsync_click(object sender, EventArgs e)
     {
       btnStartServer.Enabled = true;
       serverBufferSize.Enabled = true;
@@ -153,7 +153,7 @@ namespace bp01_chatapplicatie
       btnStartServer.Visible = true;
       btnStopServer.Visible = false;
 
-      await SendMessageToClients(CLOSE_SERVER + "Server is shutting down, Goodbye... smell ya later!");
+      await SendMessageToClientsAsync(CLOSE_SERVER + "Server is shutting down, Goodbye... smell ya later!");
 
       _tcpListener.Stop();
 
@@ -182,7 +182,7 @@ namespace bp01_chatapplicatie
     }
 
     // Send message to all connected clients
-    private async Task SendMessageToClients(string message)
+    private async Task SendMessageToClientsAsync(string message)
     {
       if (clientsConnected.Count > 0)
       {
