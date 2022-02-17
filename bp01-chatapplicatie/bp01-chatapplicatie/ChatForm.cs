@@ -12,8 +12,11 @@ namespace bp01_chatapplicatie
 {
   public partial class ChatForm : Form
   {
-    private string CLOSE_SERVER = "~close_server~";
-    
+    private string CLOSE_SERVER = "CLOSE_SERVER+";
+    private string DISCONNECT = "DISCONNECT+";
+    private string MESSAGE = "MESSAGE+";
+    private string CONNECT = "CONNECT+";
+
     private TcpClient _client;
     private NetworkStream _networkStream;
 
@@ -49,7 +52,7 @@ namespace bp01_chatapplicatie
           clientDisconnect.Visible = true;
 
           AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
-          await SendMessageToServer("", clientUsername.Text, "~connect~");
+          await SendMessageToServer("", clientUsername.Text, CONNECT);
 
           await Task.Run(MessageReceiver);
         }
@@ -66,7 +69,7 @@ namespace bp01_chatapplicatie
 
     private async void btnSend_Click(object sender, EventArgs e)
     {
-      await SendMessageToServer(" : " + clientMessage.Text, clientUsername.Text, "~message~");
+      await SendMessageToServer(" : " + clientMessage.Text, clientUsername.Text, MESSAGE);
     }
 
     private async Task SendMessageToServer(string message, string chatUsername, string command)
@@ -150,14 +153,14 @@ namespace bp01_chatapplicatie
     }
 
     private async void clientDisconnect_Click(object sender, EventArgs e)
-    {
-      clientSendMessage.Invoke(new Action(() => clientSendMessage.Enabled = false));
-      clientMessage.Invoke(new Action(() => clientMessage.Enabled = false));
-      btnStartServer.Invoke(new Action(() => btnStartServer.Visible = true));
-      connectServerGroupBox.Invoke(new Action(() => connectServerGroupBox.Visible = true));
-      clientDisconnect.Invoke(new Action(() => clientDisconnect.Visible = false));
+    { 
+      clientSendMessage.Enabled = false;
+      clientMessage.Enabled = false;
+      btnStartServer.Visible = true;
+      connectServerGroupBox.Visible = true;
+      clientDisconnect.Visible = false;
       
-      await SendMessageToServer("", clientUsername.Text, "~disconnect~");
+      await SendMessageToServer("", clientUsername.Text, DISCONNECT);
     }
 
     private void clientMessage_KeyDown_2(object sender, KeyEventArgs e)
