@@ -180,34 +180,34 @@
   <data name="&gt;&gt;clientMessage.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="btnSendMessage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="btnSendMessageAsync.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="btnSendMessage.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnSendMessageAsync.Font" type="System.Drawing.Font, System.Drawing">
     <value>Cascadia Mono SemiLight, 8.25pt</value>
   </data>
-  <data name="btnSendMessage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnSendMessageAsync.Location" type="System.Drawing.Point, System.Drawing">
     <value>445, 406</value>
   </data>
-  <data name="btnSendMessage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnSendMessageAsync.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 33</value>
   </data>
-  <data name="btnSendMessage.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnSendMessageAsync.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="btnSendMessage.Text" xml:space="preserve">
+  <data name="btnSendMessageAsync.Text" xml:space="preserve">
     <value>Send Message</value>
   </data>
-  <data name="&gt;&gt;btnSendMessage.Name" xml:space="preserve">
-    <value>btnSendMessage</value>
+  <data name="&gt;&gt;btnSendMessageAsync.Name" xml:space="preserve">
+    <value>btnSendMessageAsync</value>
   </data>
-  <data name="&gt;&gt;btnSendMessage.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnSendMessageAsync.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;btnSendMessage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnSendMessageAsync.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;btnSendMessage.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnSendMessageAsync.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="connectServerGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">

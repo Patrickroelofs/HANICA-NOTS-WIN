@@ -225,5 +225,17 @@ namespace bp01_chatapplicatie
         listClientsConnected.Invoke(new Action(() => listClientsConnected.Items.Clear()));
       }
     }
+
+    private async void btnSendMessage_Click(object sender, EventArgs e)
+    {
+      if (!btnStartServer.Enabled && serverChatBox.Text.Length > 0)
+      {
+        AddMessage(serverUsername.Text + " : " + serverChatBox.Text);
+        await SendMessageToClientsAsync(MESSAGE + serverUsername.Text + " : " + serverChatBox.Text);
+      
+        serverChatBox.Clear();
+        serverChatBox.Focus();
+      }
+    }
   }
 }

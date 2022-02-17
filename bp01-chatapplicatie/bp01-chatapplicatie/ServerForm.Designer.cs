@@ -43,9 +43,13 @@
       this.listClientsConnected = new System.Windows.Forms.ListBox();
       this.grpChats = new System.Windows.Forms.GroupBox();
       this.listChatBox = new System.Windows.Forms.ListBox();
+      this.grpServerChat = new System.Windows.Forms.GroupBox();
+      this.btnSendMessage = new System.Windows.Forms.Button();
+      this.serverChatBox = new System.Windows.Forms.TextBox();
       this.grpServerSettings.SuspendLayout();
       this.grpClientsConnected.SuspendLayout();
       this.grpChats.SuspendLayout();
+      this.grpServerChat.SuspendLayout();
       this.SuspendLayout();
       // 
       // grpServerSettings
@@ -80,8 +84,7 @@
       // 
       // btnStartServer
       // 
-      this.btnStartServer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.btnStartServer.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.btnStartServer.Location = new System.Drawing.Point(245, 123);
       this.btnStartServer.Name = "btnStartServer";
       this.btnStartServer.Size = new System.Drawing.Size(83, 23);
@@ -128,8 +131,7 @@
       // 
       // serverBufferSize
       // 
-      this.serverBufferSize.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverBufferSize.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.serverBufferSize.Location = new System.Drawing.Point(116, 97);
       this.serverBufferSize.Name = "serverBufferSize";
       this.serverBufferSize.Size = new System.Drawing.Size(212, 20);
@@ -138,8 +140,7 @@
       // 
       // serverPort
       // 
-      this.serverPort.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverPort.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.serverPort.Location = new System.Drawing.Point(116, 71);
       this.serverPort.Name = "serverPort";
       this.serverPort.Size = new System.Drawing.Size(212, 20);
@@ -148,8 +149,7 @@
       // 
       // serverIP
       // 
-      this.serverIP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverIP.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.serverIP.Location = new System.Drawing.Point(116, 45);
       this.serverIP.Name = "serverIP";
       this.serverIP.Size = new System.Drawing.Size(212, 20);
@@ -158,8 +158,7 @@
       // 
       // serverUsername
       // 
-      this.serverUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.serverUsername.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.serverUsername.Location = new System.Drawing.Point(116, 19);
       this.serverUsername.Name = "serverUsername";
       this.serverUsername.Size = new System.Drawing.Size(212, 20);
@@ -168,31 +167,27 @@
       // 
       // grpClientsConnected
       // 
-      this.grpClientsConnected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+      this.grpClientsConnected.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
       this.grpClientsConnected.Controls.Add(this.listClientsConnected);
-      this.grpClientsConnected.Location = new System.Drawing.Point(12, 174);
+      this.grpClientsConnected.Location = new System.Drawing.Point(12, 236);
       this.grpClientsConnected.Name = "grpClientsConnected";
-      this.grpClientsConnected.Size = new System.Drawing.Size(334, 248);
+      this.grpClientsConnected.Size = new System.Drawing.Size(334, 186);
       this.grpClientsConnected.TabIndex = 1;
       this.grpClientsConnected.TabStop = false;
       this.grpClientsConnected.Text = "Clients Connected";
       // 
       // listClientsConnected
       // 
-      this.listClientsConnected.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+      this.listClientsConnected.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
       this.listClientsConnected.FormattingEnabled = true;
       this.listClientsConnected.Location = new System.Drawing.Point(6, 17);
       this.listClientsConnected.Name = "listClientsConnected";
-      this.listClientsConnected.Size = new System.Drawing.Size(322, 225);
+      this.listClientsConnected.Size = new System.Drawing.Size(322, 160);
       this.listClientsConnected.TabIndex = 0;
       // 
       // grpChats
       // 
-      this.grpChats.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.grpChats.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.grpChats.Controls.Add(this.listChatBox);
       this.grpChats.Location = new System.Drawing.Point(352, 12);
       this.grpChats.Name = "grpChats";
@@ -203,14 +198,40 @@
       // 
       // listChatBox
       // 
-      this.listChatBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+      this.listChatBox.Anchor = ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
       this.listChatBox.FormattingEnabled = true;
       this.listChatBox.Location = new System.Drawing.Point(6, 22);
       this.listChatBox.Name = "listChatBox";
       this.listChatBox.Size = new System.Drawing.Size(298, 381);
       this.listChatBox.TabIndex = 0;
+      // 
+      // grpServerChat
+      // 
+      this.grpServerChat.Controls.Add(this.btnSendMessage);
+      this.grpServerChat.Controls.Add(this.serverChatBox);
+      this.grpServerChat.Location = new System.Drawing.Point(12, 174);
+      this.grpServerChat.Name = "grpServerChat";
+      this.grpServerChat.Size = new System.Drawing.Size(334, 56);
+      this.grpServerChat.TabIndex = 4;
+      this.grpServerChat.TabStop = false;
+      this.grpServerChat.Text = "Chat";
+      // 
+      // btnSendMessage
+      // 
+      this.btnSendMessage.Location = new System.Drawing.Point(253, 19);
+      this.btnSendMessage.Name = "btnSendMessage";
+      this.btnSendMessage.Size = new System.Drawing.Size(75, 23);
+      this.btnSendMessage.TabIndex = 1;
+      this.btnSendMessage.Text = "Send";
+      this.btnSendMessage.UseVisualStyleBackColor = true;
+      this.btnSendMessage.Click += new System.EventHandler(this.btnSendMessage_Click);
+      // 
+      // serverChatBox
+      // 
+      this.serverChatBox.Location = new System.Drawing.Point(6, 20);
+      this.serverChatBox.Name = "serverChatBox";
+      this.serverChatBox.Size = new System.Drawing.Size(241, 20);
+      this.serverChatBox.TabIndex = 0;
       // 
       // ServerForm
       // 
@@ -218,6 +239,7 @@
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
       this.ClientSize = new System.Drawing.Size(674, 434);
+      this.Controls.Add(this.grpServerChat);
       this.Controls.Add(this.grpChats);
       this.Controls.Add(this.grpClientsConnected);
       this.Controls.Add(this.grpServerSettings);
@@ -230,9 +252,15 @@
       this.grpServerSettings.PerformLayout();
       this.grpClientsConnected.ResumeLayout(false);
       this.grpChats.ResumeLayout(false);
+      this.grpServerChat.ResumeLayout(false);
+      this.grpServerChat.PerformLayout();
       this.ResumeLayout(false);
-
     }
+
+    private System.Windows.Forms.TextBox serverChatBox;
+    private System.Windows.Forms.Button btnSendMessage;
+
+    private System.Windows.Forms.GroupBox grpServerChat;
 
     private System.Windows.Forms.Button btnStopServer;
 
