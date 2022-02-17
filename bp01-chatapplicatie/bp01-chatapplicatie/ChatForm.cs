@@ -127,11 +127,11 @@ namespace bp01_chatapplicatie
               
             AddMessage(completeMessage.ToString());
             
-            btnSendMessage.Enabled = false;
-            clientMessage.Enabled = false;
-            btnStartServer.Visible = true;
-            connectServerGroupBox.Visible = true;
-            btnDisconnect.Visible = false;
+            btnSendMessage.Invoke(new Action(() => btnSendMessage.Enabled = false));
+            clientMessage.Invoke(new Action(() => clientMessage.Enabled = false));
+            btnStartServer.Invoke(new Action(() => btnStartServer.Visible = true));
+            connectServerGroupBox.Invoke(new Action(() => connectServerGroupBox.Visible = true));
+            btnDisconnect.Invoke(new Action(() => btnDisconnect.Visible = false));
 
             _networkStream.Close();
             _client.Close();
@@ -149,7 +149,7 @@ namespace bp01_chatapplicatie
       }
       catch (ObjectDisposedException)
       {
-        AddMessage("Server was shutdown and something went wrong...");
+        AddMessage("Server was shutdown, but something went wrong...");
       }
     }
 
