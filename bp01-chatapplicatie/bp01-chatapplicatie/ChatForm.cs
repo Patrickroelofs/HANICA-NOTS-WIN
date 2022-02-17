@@ -25,17 +25,31 @@ namespace bp01_chatapplicatie
       InitializeComponent();
       
       // Disable chat when not connected to server
-      clientSendMessage.Enabled = false;
+      btnSendMessage.Enabled = false;
       clientMessage.Enabled = false;
-      clientDisconnect.Visible = false;
+      btnDisconnect.Visible = false;
       
       MinimumSize = new Size(600, 400);
     }
 
+    // Start server button, opens new Form
+    private void btnStartServer_Click(object sender, EventArgs e)
+    {
+      connectServerGroupBox.Visible = false;
+      clientMessage.Enabled = false;
+      btnSendMessage.Enabled = false;
+
+      Hide();
+      ServerForm form = new ServerForm();
+      form.ShowDialog();
+    }
+
+    // Connect to server as client
     private async void btnConnect_Click(object sender, EventArgs e)
     {
       try
       {
+        // if all inputs are correct
         if (Parsers.ParseInputs(clientIP.Text, clientPort.Text, clientUsername.Text, clientBufferSize.Text))
         {
           AddMessage("Attempting to connect to " + clientIP.Text + ":" + clientPort.Text);
@@ -45,11 +59,11 @@ namespace bp01_chatapplicatie
       
           _networkStream = _client.GetStream();
 
-          clientSendMessage.Enabled = true;
+          btnSendMessage.Enabled = true;
           btnStartServer.Visible = false;
           clientMessage.Enabled = true;
           connectServerGroupBox.Visible = false;
-          clientDisconnect.Visible = true;
+          btnDisconnect.Visible = true;
 
           AddMessage("Connected to " + clientIP.Text + ":" + clientPort.Text);
           await SendMessageToServer("", clientUsername.Text, CONNECT);
@@ -67,11 +81,13 @@ namespace bp01_chatapplicatie
       }
     }
 
+    // Send message to the server on click
     private async void btnSend_Click(object sender, EventArgs e)
     {
       await SendMessageToServer(" : " + clientMessage.Text, clientUsername.Text, MESSAGE);
     }
 
+    // send message to the server
     private async Task SendMessageToServer(string message, string chatUsername, string command)
     {
       if (_networkStream.CanWrite)
@@ -84,17 +100,7 @@ namespace bp01_chatapplicatie
       clientMessage.Focus();
     }
 
-    private void btnStartServer_Click(object sender, EventArgs e)
-    {
-      connectServerGroupBox.Visible = false;
-      clientMessage.Enabled = false;
-      clientSendMessage.Enabled = false;
-
-      Hide();
-      ServerForm form = new ServerForm();
-      form.ShowDialog();
-    }
-
+    // Receives messages and parses them through custom filters.
     private async void MessageReceiver()
     {
       byte[] buffer = new byte[Parsers.ParseToInt(clientBufferSize.Text)];
@@ -106,7 +112,8 @@ namespace bp01_chatapplicatie
         while (true)
         {
           StringBuilder completeMessage = new StringBuilder();
-      
+
+          // loop over the message and append every bit from the buffer to the string, continue when done.
           if (networkStream.CanRead)
           {
             do
@@ -116,6 +123,7 @@ namespace bp01_chatapplicatie
             } while (networkStream.DataAvailable);
           }
           
+          // if the message contains the close server command, disconnect the client
           if (completeMessage.ToString().StartsWith(CLOSE_SERVER) && completeMessage.Length > 0)
           {
             completeMessage.Remove(0, CLOSE_SERVER.Length);
@@ -128,6 +136,7 @@ namespace bp01_chatapplicatie
           }
           else
           {
+            // Write message to list
             if (completeMessage.Length > 0)
             {
               AddMessage("" + completeMessage);
@@ -137,40 +146,44 @@ namespace bp01_chatapplicatie
       }
       catch (ObjectDisposedException)
       {
-        clientSendMessage.Invoke(new Action(() => clientSendMessage.Enabled = false));
+        btnSendMessage.Invoke(new Action(() => btnSendMessage.Enabled = false));
         clientMessage.Invoke(new Action(() => clientMessage.Enabled = false));
         btnStartServer.Invoke(new Action(() => btnStartServer.Visible = true));
         connectServerGroupBox.Invoke(new Action(() => connectServerGroupBox.Visible = true));
-        clientDisconnect.Invoke(new Action(() => clientDisconnect.Visible = false));
+        btnDisconnect.Invoke(new Action(() => btnDisconnect.Visible = false));
         
         AddMessage("Server was shutdown.");
       }
     }
 
+    // Add Message to client listbox
     private void AddMessage(string message)
     {
       clientMessageList.Invoke(new Action(() => clientMessageList.Items.Add(message)));
     }
 
+    // Client disconnect button
     private async void clientDisconnect_Click(object sender, EventArgs e)
     { 
-      clientSendMessage.Enabled = false;
+      btnSendMessage.Enabled = false;
       clientMessage.Enabled = false;
       btnStartServer.Visible = true;
       connectServerGroupBox.Visible = true;
-      clientDisconnect.Visible = false;
+      btnDisconnect.Visible = false;
       
       await SendMessageToServer("", clientUsername.Text, DISCONNECT);
     }
 
-    private void clientMessage_KeyDown_2(object sender, KeyEventArgs e)
+    // Catch the enter key so the client can send messages with keyboard.
+    private void clientMessage_KeyDown(object sender, KeyEventArgs e)
     {
       if (e.KeyCode == Keys.Enter)
       {
-        btnSend_Click(sender, e);
+        btnSendMessage.PerformClick();
       }
     }
 
+    // Catch the windows close program button and ensure the client gets stopped when closing the form.
     private void ChatForm_FormClosing(object sender, FormClosingEventArgs e)
     {
       if (e.CloseReason == CloseReason.UserClosing)
@@ -179,8 +192,8 @@ namespace bp01_chatapplicatie
 
         if (result == DialogResult.Yes)
         {
-          clientDisconnect.PerformClick();
-          
+          btnDisconnect.PerformClick();
+
           Environment.Exit(0);
         }
         else

@@ -180,34 +180,34 @@
   <data name="&gt;&gt;clientMessage.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="clientSendMessage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="btnSendMessage.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="clientSendMessage.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btnSendMessage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Cascadia Mono SemiLight, 8.25pt</value>
   </data>
-  <data name="clientSendMessage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnSendMessage.Location" type="System.Drawing.Point, System.Drawing">
     <value>445, 406</value>
   </data>
-  <data name="clientSendMessage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnSendMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 33</value>
   </data>
-  <data name="clientSendMessage.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnSendMessage.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="clientSendMessage.Text" xml:space="preserve">
+  <data name="btnSendMessage.Text" xml:space="preserve">
     <value>Send Message</value>
   </data>
-  <data name="&gt;&gt;clientSendMessage.Name" xml:space="preserve">
-    <value>clientSendMessage</value>
+  <data name="&gt;&gt;btnSendMessage.Name" xml:space="preserve">
+    <value>btnSendMessage</value>
   </data>
-  <data name="&gt;&gt;clientSendMessage.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnSendMessage.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;clientSendMessage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnSendMessage.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;clientSendMessage.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnSendMessage.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="connectServerGroupBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -30052,28 +30052,28 @@
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>800, 450</value>
   </data>
-  <data name="clientDisconnect.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="btnDisconnect.Location" type="System.Drawing.Point, System.Drawing">
     <value>567, 51</value>
   </data>
-  <data name="clientDisconnect.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="btnDisconnect.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 59</value>
   </data>
-  <data name="clientDisconnect.TabIndex" type="System.Int32, mscorlib">
+  <data name="btnDisconnect.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="clientDisconnect.Text" xml:space="preserve">
+  <data name="btnDisconnect.Text" xml:space="preserve">
     <value>Disconnect</value>
   </data>
-  <data name="&gt;&gt;clientDisconnect.Name" xml:space="preserve">
-    <value>clientDisconnect</value>
+  <data name="&gt;&gt;btnDisconnect.Name" xml:space="preserve">
+    <value>btnDisconnect</value>
   </data>
-  <data name="&gt;&gt;clientDisconnect.Type" xml:space="preserve">
+  <data name="&gt;&gt;btnDisconnect.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;clientDisconnect.Parent" xml:space="preserve">
+  <data name="&gt;&gt;btnDisconnect.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;clientDisconnect.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;btnDisconnect.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
