@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Net;
 using System.Windows.Forms;
-using System.Diagnostics;
 using System.Drawing;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace bp01_chatapplicatie
@@ -129,6 +126,12 @@ namespace bp01_chatapplicatie
             completeMessage.Remove(0, CLOSE_SERVER.Length);
               
             AddMessage(completeMessage.ToString());
+            
+            btnSendMessage.Enabled = false;
+            clientMessage.Enabled = false;
+            btnStartServer.Visible = true;
+            connectServerGroupBox.Visible = true;
+            btnDisconnect.Visible = false;
 
             _networkStream.Close();
             _client.Close();
@@ -146,13 +149,7 @@ namespace bp01_chatapplicatie
       }
       catch (ObjectDisposedException)
       {
-        btnSendMessage.Invoke(new Action(() => btnSendMessage.Enabled = false));
-        clientMessage.Invoke(new Action(() => clientMessage.Enabled = false));
-        btnStartServer.Invoke(new Action(() => btnStartServer.Visible = true));
-        connectServerGroupBox.Invoke(new Action(() => connectServerGroupBox.Visible = true));
-        btnDisconnect.Invoke(new Action(() => btnDisconnect.Visible = false));
-        
-        AddMessage("Server was shutdown.");
+        AddMessage("Server was shutdown and something went wrong...");
       }
     }
 

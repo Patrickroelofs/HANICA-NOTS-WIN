@@ -153,7 +153,7 @@ namespace bp01_chatapplicatie
       btnStartServer.Visible = true;
       btnStopServer.Visible = false;
 
-      await SendMessageToClients(CLOSE_SERVER + "Server is shutting down");
+      await SendMessageToClients(CLOSE_SERVER + "Server is shutting down, Goodbye... smell ya later!");
 
       _tcpListener.Stop();
 
