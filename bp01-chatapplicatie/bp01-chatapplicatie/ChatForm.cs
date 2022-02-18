@@ -81,7 +81,6 @@ namespace bp01_chatapplicatie
     // Send message to the server on click
     private async void btnSendAsync_Click(object sender, EventArgs e)
     {
-      AddMessage(clientUsername.Text + ": " + clientMessage.Text);
       await SendMessageToServerAsync(" : " + clientMessage.Text, clientUsername.Text, MESSAGE);
     }
 
@@ -142,7 +141,7 @@ namespace bp01_chatapplicatie
           {
             // Write message to list
             completeMessage.Remove(0, MESSAGE.Length);
-            AddMessage("" + completeMessage);
+            AddMessage(completeMessage.ToString());
           }
         }
       }

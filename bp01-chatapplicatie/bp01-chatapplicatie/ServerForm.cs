@@ -106,7 +106,7 @@ namespace bp01_chatapplicatie
             completeMessage.Remove(0, MESSAGE.Length);
             
             AddMessage(completeMessage.ToString());
-            await SendMessageToClientsAsync(completeMessage.ToString());
+            await SendMessageToClientsAsync(MESSAGE + completeMessage);
 
 
           } 
