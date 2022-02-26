@@ -137,6 +137,11 @@ namespace bp01_chatapplicatie
             _client.Close();
 
           }
+          else if (completeMessage.ToString().StartsWith(DISCONNECT))
+          {
+            completeMessage.Remove(0, DISCONNECT.Length);
+            AddMessage(completeMessage.ToString());
+          }
           else if(completeMessage.ToString().StartsWith(MESSAGE))
           {
             // Write message to list

@@ -115,9 +115,8 @@ namespace bp01_chatapplicatie
           {
             completeMessage.Remove(0, DISCONNECT.Length);
             AddMessage("Client " + completeMessage + " has disconnected.");
-            await SendMessageToClientsAsync("Client " + completeMessage + " has disconnected.");
             RemoveClientFromList(client);
-            
+            await SendMessageToClientsAsync(DISCONNECT + "Client " + completeMessage + " has disconnected.");
           } 
           // if the completemessage starts with the closeServer signature
           else if (completeMessage.ToString().StartsWith(CLOSE_SERVER))
