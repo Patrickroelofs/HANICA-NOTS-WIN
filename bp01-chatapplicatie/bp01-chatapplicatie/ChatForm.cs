@@ -81,7 +81,14 @@ namespace bp01_chatapplicatie
     // Send message to the server on click
     private async void btnSendAsync_Click(object sender, EventArgs e)
     {
-      await SendMessageToServerAsync(" : " + clientMessage.Text, clientUsername.Text, MESSAGE);
+      if (clientMessage.Text.Length > 0)
+      {
+        await SendMessageToServerAsync(" : " + clientMessage.Text, clientUsername.Text, MESSAGE);
+      }
+      else
+      {
+        AddMessage("Message is too short");
+      }
     }
 
     // send message to the server

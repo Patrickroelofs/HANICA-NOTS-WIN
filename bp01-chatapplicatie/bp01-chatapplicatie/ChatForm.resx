@@ -162,8 +162,11 @@
   <data name="clientMessage.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 412</value>
   </data>
+  <data name="clientMessage.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="clientMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>427, 23</value>
+    <value>427, 20</value>
   </data>
   <data name="clientMessage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
