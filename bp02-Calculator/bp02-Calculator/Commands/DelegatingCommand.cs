@@ -3,6 +3,8 @@ using System.Windows.Input;
 
 namespace bp02_Calculator.Commands;
 
+// Source : https://www.wpftutorial.net/DelegateCommand.html
+// And a bit of help from Github Copilot
 public class DelegatingCommand : ICommand
 {
     private readonly Action<object> _execute;
