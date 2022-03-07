@@ -1,0 +1,125 @@
+﻿<Window x:Class="bp02_Calculator.Views.CalculatorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:bp02_Calculator.Views"
+        xmlns:viewModels="clr-namespace:bp02_Calculator.ViewModels"
+        xmlns:models="clr-namespace:bp02_Calculator.Models"
+        mc:Ignorable="d"
+        Title="Calculator" Height="450" Width="325">
+    
+    <Window.DataContext>
+        <viewModels:CalculatorViewModel />
+    </Window.DataContext>
+    
+    <Grid>
+        <!-- Define Grid Resources -->
+        <Grid.Resources>
+            <Style x:Key="Digits" TargetType="{x:Type Button}">
+                <Setter Property="Command" Value="{Binding InsertCommand}" />
+                <Setter Property="CommandParameter" Value="{Binding  RelativeSource={RelativeSource Self}, Path=Content}" />
+            </Style>
+            
+            <Style x:Key="Actions" TargetType="{x:Type Button}">
+                <Setter Property="Command" Value="{Binding InsertCommand}" />
+                <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=Content}"></Setter>
+            </Style>
+        </Grid.Resources>
+        
+        <!-- Define Grid Layout -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        
+        <!-- Define TextBlocks -->
+        <TextBlock Name="InputTextBox" TextAlignment="Center" FontSize="16" Text="{Binding Expression, Mode=OneWay}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
+        <TextBlock Name="ResultTextBox" TextAlignment="Center" FontSize="35" Text="{Binding Result, Mode=OneWay}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="4" Grid.Column="0" Grid.Row="0" />
+        
+        <!-- Define Expression Buttons -->
+        <Button
+            Name="ButtonAdd"
+            Content="+"
+            Grid.Column="3"
+            Grid.Row="5"
+            Style="{StaticResource Actions}" />
+        
+        <Button
+            Name="ButtonRemove"
+            Content="-"
+            Grid.Column="3"
+            Grid.Row="4"
+            Style="{StaticResource Actions}" />
+        
+        <Button
+            Name="ButtonMultiply"
+            Content="*"
+            Grid.Column="3"
+            Grid.Row="3"
+            Style="{StaticResource Actions}" />
+        
+        <Button
+            Name="ButtonDivide"
+            Content="/"
+            Grid.Column="3"
+            Grid.Row="2"
+            Style="{StaticResource Actions}" />
+        
+        
+        <!-- Define Operation Buttons -->
+        <Button 
+            Name="ButtonClear" 
+            Content="C"
+            Grid.Column="0"
+            Grid.Row="2"
+            Style="{StaticResource Actions}"
+            Command="{Binding InsertOperationCommand}" 
+            CommandParameter="{x:Static models:Operations.Clear}" />
+        
+        <Button 
+            Name="ButtonBackspace"
+            Content="REMOVE"
+            Grid.Column="3"
+            Grid.Row="1"
+            Style="{StaticResource Actions}"
+            Command="{Binding InsertOperationCommand}"
+            CommandParameter="{x:Static models:Operations.Backspace}" />
+        
+        <Button
+            Name="ButtonResult"
+            Content="="
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.Row="6"
+            Style="{StaticResource Actions}"
+            Command="{Binding InsertOperationCommand}"
+            CommandParameter="{x:Static models:Operations.Equal}" />
+        
+
+        
+        <!-- Define Digits -->
+        <Button Name="Button7" Grid.Row="3" Grid.Column="0" Style="{StaticResource Digits}" Content="7" />
+        <Button Name="Button8" Grid.Row="3" Grid.Column="1" Style="{StaticResource Digits}" Content="8" />
+        <Button Name="Button9" Grid.Row="3" Grid.Column="2" Style="{StaticResource Digits}" Content="9" />
+        <Button Name="Button4" Grid.Row="4" Grid.Column="0" Style="{StaticResource Digits}" Content="4" />
+        <Button Name="Button5" Grid.Row="4" Grid.Column="1" Style="{StaticResource Digits}" Content="5" />
+        <Button Name="Button6" Grid.Row="4" Grid.Column="2" Style="{StaticResource Digits}" Content="6" />
+        <Button Name="Button1" Grid.Row="5" Grid.Column="0" Style="{StaticResource Digits}" Content="1" />
+        <Button Name="Button2" Grid.Row="5" Grid.Column="1" Style="{StaticResource Digits}" Content="2" />
+        <Button Name="Button3" Grid.Row="5" Grid.Column="2" Style="{StaticResource Digits}" Content="3" />
+        <Button Name="Button0" Grid.Row="6" Grid.Column="1" Style="{StaticResource Digits}" Content="0" />
+        <Button Name="ButtonComma" Grid.Row="6" Grid.Column="0" Style="{StaticResource Digits}" CommandParameter="." Content="," />
+    </Grid>
+</Window>
