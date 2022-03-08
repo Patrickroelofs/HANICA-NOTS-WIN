@@ -7,7 +7,7 @@
         xmlns:viewModels="clr-namespace:bp02_Calculator.ViewModels"
         xmlns:models="clr-namespace:bp02_Calculator.Models"
         mc:Ignorable="d"
-        Title="Calculator" Height="450" Width="325">
+        Title="Calculator" Height="450" Width="750">
     
     <Window.DataContext>
         <viewModels:CalculatorViewModel />
@@ -33,6 +33,7 @@
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
