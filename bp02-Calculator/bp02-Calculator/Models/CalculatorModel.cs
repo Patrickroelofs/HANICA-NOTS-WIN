@@ -1,6 +1,10 @@
-﻿using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Globalization;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using org.mariuszgromada.math.mxparser;
 
 namespace bp02_Calculator.Models
@@ -9,19 +13,16 @@ namespace bp02_Calculator.Models
     {
         Clear,
         Equal,
-        Backspace
+        Backspace,
+        Save
     }
-    
-    public interface IOperations
+    public class CalculatorModel
     {
-        void Insert(string digit);
-        void InsertOperation(Operations operation);
-    }
-    
-    public class CalculatorModel : IOperations
-    {
+        static HttpClient _client = new();
         public string Expression { get; private set; } = string.Empty;
         public string Result { get; private set; } = string.Empty;
+
+        public ObservableCollection<SavedCalculationsModel> SavedCalculations = new ObservableCollection<SavedCalculationsModel>();
 
         private void Clear()
         {
@@ -61,6 +62,9 @@ namespace bp02_Calculator.Models
                 case Operations.Equal:
                     Equal();
                     break;
+                case Operations.Save:
+                    SaveCalculation();
+                    break;
             }
         }
 
@@ -70,5 +74,42 @@ namespace bp02_Calculator.Models
 
             return expression.calculate().ToString(CultureInfo.InvariantCulture);
         }
+        
+        static void ConnectToApi()
+        {
+            _client = new HttpClient();
+            _client.BaseAddress = new Uri("https://localhost:7140/");
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+        }
+
+        private async void SaveCalculation()
+        {
+            ConnectToApi();
+            var response = await _client.PostAsJsonAsync("/api/Calculator", new SavedCalculationsModel()
+            {
+                calculation = Expression
+            });
+
+            if (response.IsSuccessStatusCode)
+            {
+                SavedCalculations.Add(new SavedCalculationsModel()
+                {
+                    calculation = Expression
+                });
+            }
+        }
+        public async void LoadCalculations()
+        {
+            ConnectToApi();
+            var response = await _client.GetFromJsonAsync<ObservableCollection<SavedCalculationsModel>>("/api/Calculator");
+
+            foreach (var item in response)
+            {
+                SavedCalculations.Add(item);
+            }
+        }
+
     }
 }
