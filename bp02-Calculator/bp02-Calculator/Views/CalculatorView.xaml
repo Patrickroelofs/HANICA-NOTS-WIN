@@ -1,14 +1,16 @@
-﻿<Window x:Class="bp02_Calculator.Views.CalculatorView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:bp02_Calculator.Views"
-        xmlns:viewModels="clr-namespace:bp02_Calculator.ViewModels"
-        xmlns:models="clr-namespace:bp02_Calculator.Models"
-        xmlns:fw="clr-namespace:SourceChord.FluentWPF;assembly=FluentWPF"
-        mc:Ignorable="d"
-        Title="Calculator" Height="450" Width="750">
+﻿<Window
+    x:Class="bp02_Calculator.Views.CalculatorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:bp02_Calculator.Views"
+    xmlns:viewModels="clr-namespace:bp02_Calculator.ViewModels"
+    xmlns:models="clr-namespace:bp02_Calculator.Models"
+    mc:Ignorable="d"
+    Title="Calculator" Height="450" Width="750"
+    WindowStartupLocation="CenterScreen"
+  >
     
     <Window.DataContext>
         <viewModels:CalculatorViewModel />
@@ -47,7 +49,7 @@
         </Grid.RowDefinitions>
         
         <!-- Define TextBlocks -->
-        <TextBlock Name="InputTextBox" TextAlignment="Center" FontSize="16" Text="{Binding Expression, Mode=OneWay}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
+        <TextBlock Name="InputTextBox" TextAlignment="Center" FontSize="16" Text="{Binding Expression}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
         <TextBlock Name="ResultTextBox" TextAlignment="Center" FontSize="35" Text="{Binding Result, Mode=OneWay}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="4" Grid.Column="0" Grid.Row="0" />
         
         <!-- Define Expression Buttons -->
@@ -139,7 +141,8 @@
             ItemsSource="{Binding SavedCalculations, Mode=OneWay}"
             Grid.Row="0" 
             Grid.Column="4" 
-            Grid.RowSpan="7">
+            Grid.RowSpan="7"
+            Background="Transparent">
             <ListBox.ContextMenu>
                     <ContextMenu>
                         <MenuItem
