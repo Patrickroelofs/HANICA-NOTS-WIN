@@ -14,15 +14,15 @@ namespace bp02_Calculator.Models
         Clear,
         Equal,
         Backspace,
-        Save
+        Save,
+        Delete
     }
     public class CalculatorModel
     {
         static HttpClient _client = new();
         public string Expression { get; private set; } = string.Empty;
         public string Result { get; private set; } = string.Empty;
-
-        public ObservableCollection<SavedCalculationsModel> SavedCalculations = new ObservableCollection<SavedCalculationsModel>();
+        public ObservableCollection<SavedCalculationsModel> SavedCalculations = new();
 
         private void Clear()
         {
@@ -94,15 +94,25 @@ namespace bp02_Calculator.Models
 
             if (response.IsSuccessStatusCode)
             {
-                SavedCalculations.Add(new SavedCalculationsModel()
-                {
-                    calculation = Expression
-                });
+                LoadCalculations();
             }
         }
+
+        public async void DeleteCalculation(SavedCalculationsModel operation)
+        {
+            ConnectToApi();
+            var response = await _client.DeleteAsync($"api/Calculator/{operation.id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                SavedCalculations.Remove(operation);
+            }
+        }
+
         public async void LoadCalculations()
         {
             ConnectToApi();
+            SavedCalculations.Clear();
             var response = await _client.GetFromJsonAsync<ObservableCollection<SavedCalculationsModel>>("/api/Calculator");
 
             foreach (var item in response)
@@ -111,5 +121,11 @@ namespace bp02_Calculator.Models
             }
         }
 
+        public void LoadCalculationIntoCalculator(SavedCalculationsModel operation)
+        {
+
+            Expression = operation.calculation;
+            Result = CalculateExpression();
+        }
     }
 }

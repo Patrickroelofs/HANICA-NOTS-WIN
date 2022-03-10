@@ -8,7 +8,6 @@ public partial class CalculatorView
 {
     public CalculatorView()
     {
-        DataContext = this;
         InitializeComponent();
     }
 }
