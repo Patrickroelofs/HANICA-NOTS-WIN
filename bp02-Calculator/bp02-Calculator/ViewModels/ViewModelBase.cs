@@ -7,10 +7,10 @@ namespace bp02_Calculator.ViewModels;
 // And a bit of help from Github Copilot
 public class ViewModelBase : INotifyPropertyChanged
 {
-    public event PropertyChangedEventHandler? PropertyChanged;
-    
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+  public event PropertyChangedEventHandler? PropertyChanged;
+
+  protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+  {
+    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+  }
 }

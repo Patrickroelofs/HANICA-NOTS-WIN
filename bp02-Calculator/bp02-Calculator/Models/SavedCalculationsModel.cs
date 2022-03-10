@@ -8,8 +8,6 @@ namespace bp02_Calculator.Models;
 
 public class SavedCalculationsModel
 {
-    public int id { get; set; }
-    public string calculation { get; set; }
-    
-    
+  public int id { get; set; }
+  public string calculation { get; set; }
 }

@@ -9,27 +9,29 @@
     xmlns:models="clr-namespace:bp02_Calculator.Models"
     mc:Ignorable="d"
     Title="Calculator" Height="450" Width="750"
-    WindowStartupLocation="CenterScreen"
-  >
-    
+    WindowStartupLocation="CenterScreen">
+
     <Window.DataContext>
         <viewModels:CalculatorViewModel />
     </Window.DataContext>
-    
+
     <Grid>
         <!-- Define Grid Resources -->
         <Grid.Resources>
             <Style x:Key="Digits" TargetType="{x:Type Button}">
                 <Setter Property="Command" Value="{Binding InsertCommand}" />
-                <Setter Property="CommandParameter" Value="{Binding  RelativeSource={RelativeSource Self}, Path=Content}" />
+                <Setter Property="CommandParameter"
+                        Value="{Binding  RelativeSource={RelativeSource Self}, Path=Content}" />
             </Style>
-            
+
             <Style x:Key="Actions" TargetType="{x:Type Button}">
                 <Setter Property="Command" Value="{Binding InsertCommand}" />
-                <Setter Property="CommandParameter" Value="{Binding RelativeSource={RelativeSource Self}, Path=Content}"></Setter>
+                <Setter Property="CommandParameter"
+                        Value="{Binding RelativeSource={RelativeSource Self}, Path=Content}">
+                </Setter>
             </Style>
         </Grid.Resources>
-        
+
         <!-- Define Grid Layout -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -47,11 +49,13 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        
+
         <!-- Define TextBlocks -->
-        <TextBlock Name="InputTextBox" TextAlignment="Center" FontSize="16" Text="{Binding Expression}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
-        <TextBlock Name="ResultTextBox" TextAlignment="Center" FontSize="35" Text="{Binding Result, Mode=OneWay}" TextWrapping="WrapWithOverflow" Grid.ColumnSpan="4" Grid.Column="0" Grid.Row="0" />
-        
+        <TextBlock Name="InputTextBox" TextAlignment="Center" FontSize="16" Text="{Binding Expression}"
+                   TextWrapping="WrapWithOverflow" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" />
+        <TextBlock Name="ResultTextBox" TextAlignment="Center" FontSize="35" Text="{Binding Result, Mode=OneWay}"
+                   TextWrapping="WrapWithOverflow" Grid.ColumnSpan="4" Grid.Column="0" Grid.Row="0" />
+
         <!-- Define Expression Buttons -->
         <Button
             Name="ButtonAdd"
@@ -59,40 +63,40 @@
             Grid.Column="3"
             Grid.Row="5"
             Style="{StaticResource Actions}" />
-        
+
         <Button
             Name="ButtonRemove"
             Content="-"
             Grid.Column="3"
             Grid.Row="4"
             Style="{StaticResource Actions}" />
-        
+
         <Button
             Name="ButtonMultiply"
             Content="*"
             Grid.Column="3"
             Grid.Row="3"
             Style="{StaticResource Actions}" />
-        
+
         <Button
             Name="ButtonDivide"
             Content="/"
             Grid.Column="3"
             Grid.Row="2"
             Style="{StaticResource Actions}" />
-        
-        
+
+
         <!-- Define Operation Buttons -->
-        <Button 
-            Name="ButtonClear" 
+        <Button
+            Name="ButtonClear"
             Content="C"
             Grid.Column="0"
             Grid.Row="2"
             Style="{StaticResource Actions}"
-            Command="{Binding InsertOperationCommand}" 
+            Command="{Binding InsertOperationCommand}"
             CommandParameter="{x:Static models:Operations.Clear}" />
-        
-        <Button 
+
+        <Button
             Name="ButtonBackspace"
             Content="REMOVE"
             Grid.Column="3"
@@ -100,7 +104,7 @@
             Style="{StaticResource Actions}"
             Command="{Binding InsertOperationCommand}"
             CommandParameter="{x:Static models:Operations.Backspace}" />
-        
+
         <Button
             Name="ButtonResult"
             Content="="
@@ -110,7 +114,7 @@
             Style="{StaticResource Actions}"
             Command="{Binding InsertOperationCommand}"
             CommandParameter="{x:Static models:Operations.Equal}" />
-        
+
         <Button
             Name="ButtonSave"
             Content="Save"
@@ -120,9 +124,8 @@
             Style="{StaticResource Actions}"
             Command="{Binding InsertOperationCommand}"
             CommandParameter="{x:Static models:Operations.Save}" />
-        
 
-        
+
         <!-- Define Digits -->
         <Button Name="Button7" Grid.Row="3" Grid.Column="0" Style="{StaticResource Digits}" Content="7" />
         <Button Name="Button8" Grid.Row="3" Grid.Column="1" Style="{StaticResource Digits}" Content="8" />
@@ -134,30 +137,31 @@
         <Button Name="Button2" Grid.Row="5" Grid.Column="1" Style="{StaticResource Digits}" Content="2" />
         <Button Name="Button3" Grid.Row="5" Grid.Column="2" Style="{StaticResource Digits}" Content="3" />
         <Button Name="Button0" Grid.Row="6" Grid.Column="1" Style="{StaticResource Digits}" Content="0" />
-        <Button Name="ButtonComma" Grid.Row="6" Grid.Column="0" Style="{StaticResource Digits}" CommandParameter="." Content="," />
-        
+        <Button Name="ButtonComma" Grid.Row="6" Grid.Column="0" Style="{StaticResource Digits}" CommandParameter="."
+                Content="," />
+
         <!-- Define Listbox -->
-        <ListBox 
+        <ListBox
             ItemsSource="{Binding SavedCalculations, Mode=OneWay}"
-            Grid.Row="0" 
-            Grid.Column="4" 
+            Grid.Row="0"
+            Grid.Column="4"
             Grid.RowSpan="7"
             Background="Transparent">
             <ListBox.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem
-                            Header="Load"
-                            Command="{Binding LoadOperationCommand}"
-                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                <ContextMenu>
+                    <MenuItem
+                        Header="Load"
+                        Command="{Binding LoadOperationCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
 
-                        <MenuItem 
-                            Header="Delete" 
-                            Command="{Binding DeleteOperationCommand}"
-                            CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
-                    </ContextMenu>
+                    <MenuItem
+                        Header="Delete"
+                        Command="{Binding DeleteOperationCommand}"
+                        CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.SelectedItem}" />
+                </ContextMenu>
             </ListBox.ContextMenu>
 
-            
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">

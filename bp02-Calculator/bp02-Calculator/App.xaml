@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:bp02_Calculator"
              StartupUri="Views/CalculatorView.xaml">
     <Application.Resources>
-        
+
     </Application.Resources>
 </Application>
