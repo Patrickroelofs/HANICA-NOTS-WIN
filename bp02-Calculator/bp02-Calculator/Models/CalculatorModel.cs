@@ -86,15 +86,18 @@ namespace bp02_Calculator.Models
 
         private async void SaveCalculation()
         {
-            ConnectToApi();
-            var response = await _client.PostAsJsonAsync("/api/Calculator", new SavedCalculationsModel()
+            if (Expression != "")
             {
-                calculation = Expression
-            });
+                ConnectToApi();
+                var response = await _client.PostAsJsonAsync("/api/Calculator", new SavedCalculationsModel()
+                {
+                    calculation = Expression
+                });
 
-            if (response.IsSuccessStatusCode)
-            {
-                LoadCalculations();
+                if (response.IsSuccessStatusCode)
+                {
+                    LoadCalculations();
+                }
             }
         }
 
