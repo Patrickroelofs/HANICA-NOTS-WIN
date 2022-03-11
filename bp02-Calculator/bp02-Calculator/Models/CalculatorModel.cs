@@ -77,11 +77,12 @@ namespace bp02_Calculator.Models
 
       Result = CalculateExpression();
     }
-
+    
     string CalculateExpression()
     {
       Expression expression = new Expression(Expression);
 
+      if (expression.calculate().ToString(CultureInfo.InvariantCulture) == "NaN") return String.Empty;
       return expression.calculate().ToString(CultureInfo.InvariantCulture);
     }
 
@@ -148,7 +149,7 @@ namespace bp02_Calculator.Models
         Result = CalculateExpression();
       } catch(Exception e)
       {
-        MessageBox.Show("Unable to load calculation, no database connection. " + e.Message);
+        MessageBox.Show("Unable to load calculation");
       }
     }
   }
