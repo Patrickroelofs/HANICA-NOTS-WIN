@@ -155,6 +155,11 @@ namespace bp01_chatapplicatie
             completeMessage.Remove(0, MESSAGE.Length);
             AddMessage(completeMessage.ToString());
           }
+          else if (completeMessage.ToString().StartsWith(CONNECT))
+          {
+            completeMessage.Remove(0, CONNECT.Length);
+            AddMessage(completeMessage.ToString());
+          }
         }
       }
       catch (ObjectDisposedException)

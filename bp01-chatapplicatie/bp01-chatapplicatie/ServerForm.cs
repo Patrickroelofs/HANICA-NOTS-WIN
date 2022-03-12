@@ -134,7 +134,7 @@ namespace bp01_chatapplicatie
               listClientsConnected.Items.Add(completeMessage.ToString())));
 
             AddMessage(completeMessage + " has connected.");
-            await SendMessageToClientsAsync(completeMessage + " has connected.");
+            await SendMessageToClientsAsync(CONNECT + completeMessage + " has connected.");
           }
         }
       }
@@ -171,7 +171,7 @@ namespace bp01_chatapplicatie
         {
           btnStopServer.PerformClick();
 
-          Environment.Exit(0);
+          Application.Exit();
         }
         else
         {
