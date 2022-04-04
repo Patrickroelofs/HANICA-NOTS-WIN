@@ -1,0 +1,59 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="bp03_Maui.MainPage"
+             xmlns:enum="clr-namespace:bp03_Maui.Models"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+  <ContentView>
+    <Grid>
+      
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+        <ColumnDefinition />
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+        <RowDefinition />
+      </Grid.RowDefinitions>
+
+      <Entry TextColor="Black" Text="{Binding Expression}" FontSize="16" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1" IsReadOnly="True" />
+      <Entry TextColor="Black" Text="{Binding Result, Mode=OneWay}" FontSize="35" Grid.ColumnSpan="4" Grid.Column="0" Grid.Row="0" IsReadOnly="True" />
+
+      <Button Grid.Row="3" Grid.Column="0" Text="7" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="3" Grid.Column="1" Text="8" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="3" Grid.Column="2" Text="9" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="4" Grid.Column="0" Text="4" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="4" Grid.Column="1" Text="5" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="4" Grid.Column="2" Text="6" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="5" Grid.Column="0" Text="1" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="5" Grid.Column="1" Text="2" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="5" Grid.Column="2" Text="3" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="6" Grid.Column="1" Text="0" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Grid.Row="6" Grid.Column="0" Text="," Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+
+      <Button Text="+" Grid.Column="3" Grid.Row="5" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Text="-" Grid.Column="3" Grid.Row="4" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Text="*" Grid.Column="3" Grid.Row="3" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      <Button Text="/" Grid.Column="3" Grid.Row="2" Command="{Binding InsertCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}" />
+      
+      <Button Text="C" Grid.Column="0" Grid.Row="2"
+              Command="{Binding InsertOperationCommand}"
+              CommandParameter="{x:Static enum:Operations.Clear}" />
+      
+      <Button Text="REMOVE" Grid.Column="3" Grid.Row="1"
+              Command="{Binding InsertOperationCommand}"
+              CommandParameter="{x:Static enum:Operations.Backspace}" />
+      
+      <Button Text="=" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="6"
+              Command="{Binding InsertOperationCommand}"
+              CommandParameter="{x:Static enum:Operations.Equal}" />
+
+    </Grid>
+    </ContentView>
+</ContentPage>
